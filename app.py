@@ -17,7 +17,7 @@ dictionary = {'type':st.secrets['type'],
 PathtoKeyFile=os.path.join(os.getcwd(), "key.json")
 with open(os.path.join(os.getcwd(), "key.json"), 'w') as outfile:
     json.dump(dictionary, outfile)
-"""
+
 import ee
 EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], PathtoKeyFile)
 ee.Initialize(EE_CREDENTIALS)
@@ -39,4 +39,4 @@ X=GetInformtionFromGoogleEarth('2015-01-01','2015-02-01','ECMWF/ERA5_LAND/HOURLY
                                                                          'leaf_area_index_low_vegetation','volumetric_soil_water_layer_2','evaporation_from_bare_soil',
                                                                          'runoff'],21.0807514,40.2975893,1000)
 st.write(X)
-"""
+
