@@ -5,7 +5,7 @@ import streamlit as st
 from google.oauth2 import service_account
 
 import os 
-st.write(os.environ.get)
+st.write(os.environ)
 
 from google.oauth2 import service_account
 
