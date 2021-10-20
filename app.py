@@ -23,6 +23,6 @@ st.write(os.getcwd()+"/.streamlit/secrets.toml")
 #)
 
 st.write(os.path.exists(newnewfile))
-EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['gee_service_account']['client_email'], newnewfile)
+EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['gee_service_account']['client_email'], st.secrets['gee_service_account']['private_key'])
 ee.Initialize(EE_CREDENTIALS)
 #
