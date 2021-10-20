@@ -1,17 +1,18 @@
 import json
+dictionary = {'type':34,
+              'project_id':61,
+              'private_key_id':82,
+              'private_key':34,
+              'client_email':61,
+              'client_id':82,
+              'auth_uri':34,
+              'token_uri':61,
+              'auth_provider_x509_cert_url':82,
+              'client_x509_cert_url':123
+             }
 
 
 
-
-
-
-
-
-
-
-
-
-"""
 import ee
 import streamlit as st
 
