@@ -8,4 +8,6 @@ st.write("DB username:",st.secrets["client_email"])
 
 #EE_PRIVATE_KEY_FILE = 'privatekey.json'
 
-EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets["client_email"],st.secrets["gee_service_account"])
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gee_service_account"]
+)
