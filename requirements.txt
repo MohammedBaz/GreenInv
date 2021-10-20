@@ -2,3 +2,4 @@ geopandas
 keplergl
 streamlit
 streamlit-folium
+ee
