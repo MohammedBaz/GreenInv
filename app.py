@@ -12,7 +12,7 @@ from google.oauth2 import service_account
 newfile=os.path.join(os.getcwd(), ".streamlit")
 st.write(os.listdir(newfile))
 
-#newnewfile=os.path.join(newfile, ".secrets.toml")
+newnewfile=os.path.join(newfile, "secrets.toml")
 
 st.write(os.getcwd()+"/.streamlit/secrets.toml")
 
@@ -22,6 +22,6 @@ st.write(os.getcwd()+"/.streamlit/secrets.toml")
 #    st.secrets["gee_service_account"]
 #)
 
-st.write(os.path.exists(newfile))
+st.write(os.path.exists(newnewfile))
 #EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['gee_service_account']['client_email'], newnewfile)
 #ee.Initialize(EE_CREDENTIALS)
