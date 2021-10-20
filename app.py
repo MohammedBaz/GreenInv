@@ -48,6 +48,6 @@ st.write(os.getcwd()+"/.streamlit/secrets.toml")
 
 
 st.write(os.path.exists(newnewfile))
-EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['Google_Earth_Engine']['client_email'], newnewfile)
+EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['Google_Earth_Engine']['client_email'], PathtoKeyFile)
 ee.Initialize(EE_CREDENTIALS)
 
