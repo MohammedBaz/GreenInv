@@ -6,8 +6,10 @@ from google.oauth2 import service_account
 
 import os 
 st.write(os.environ)
-st.write(os.listdir(os. getcwd()) )
+st.write(os.listdir(os.getcwd()).streamlit )
 from google.oauth2 import service_account
+
+os.path.join((os.getcwd()), ".streamlit/secrete.toml"))
 
 #st.write(st.secrets["gee_service_account"]["client_email"])
 #st.write(st.secrets["gee_service_account"])
