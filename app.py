@@ -15,7 +15,7 @@ dictionary = {'type':st.secrets['Google_Earth_Engine']['type'],
 
 jsonString = json.dumps(dictionary)
 st.write(jsonString)
-
+import os 
 with open(join(os.getcwd(), "key.json"), 'w') as outfile:
     json.dump(data, outfile)
 
