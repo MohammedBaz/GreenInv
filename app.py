@@ -55,5 +55,8 @@ Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 
 with st.sidebar.expander("Please select the dataset we wish to work on"):
-  ption = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
+  option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
   st.write('You selected:', option)
+  
+  GoogleEarthBands=pd.read_csv('GoogleEarthBands.csv')
+  st.write(GoogleEarthBands)
