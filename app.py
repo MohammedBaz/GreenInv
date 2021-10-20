@@ -21,5 +21,5 @@ st.write(os.getcwd()+"/.streamlit/secrets.toml")
 #)
 
 
-#EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['gee_service_account']['client_email'], credentials)
-#ee.Initialize(EE_CREDENTIALS)
+EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['gee_service_account']['client_email'], os.getcwd()+"/.streamlit/secrets.toml")
+ee.Initialize(EE_CREDENTIALS)
