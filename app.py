@@ -1,3 +1,13 @@
 import ee
 import streamlit as st
-st.write("firs line of code after clone")
+
+from google.oauth2 import service_account
+
+# Create API client.
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["Google_Earth_Engine"]
+)
+client = ee.Initialize(credentials=credentials)
+
+
+st.write("initalised")
