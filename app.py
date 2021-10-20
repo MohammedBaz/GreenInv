@@ -11,8 +11,10 @@ dictionary = {'type':st.secrets['Google_Earth_Engine']['type'],
               'auth_provider_x509_cert_url':st.secrets['Google_Earth_Engine']['auth_provider_x509_cert_url'],
               'client_x509_cert_url':st.secrets['Google_Earth_Engine']['client_x509_cert_url']
              }
-y = json.loads(dictionary)
-st.write(y)
+
+
+jsonString = json.dumps(dictionary)
+st.write(jsonString)
 
 
 import ee
