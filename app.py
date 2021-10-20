@@ -4,8 +4,8 @@ import streamlit as st
 
 from google.oauth2 import service_account
 
-st.write(st.session_state)
 
+st.write(st.session_state)
 from google.oauth2 import service_account
 
 #st.write(st.secrets["gee_service_account"]["client_email"])
