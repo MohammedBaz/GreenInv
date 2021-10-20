@@ -12,7 +12,7 @@ dictionary = {'type':st.secrets['type'],
               'auth_provider_x509_cert_url':st.secrets['auth_provider_x509_cert_url'],
               'client_x509_cert_url':st.secrets['client_x509_cert_url']
              }
-st.write(st.secrets['type'])
+
 #https://signup.earthengine.google.com/#!/service_accounts
 PathtoKeyFile=os.path.join(os.getcwd(), "key.json")
 with open(os.path.join(os.getcwd(), "key.json"), 'w') as outfile:
@@ -22,24 +22,20 @@ import ee
 EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], PathtoKeyFile)
 ee.Initialize(EE_CREDENTIALS)
 
-i_date = '2000-01-01' # Initial date of interest (inclusive).
-f_date = '2021-01-01'# Final date of interest (exclusive).
+import pandas as pd
+def GetInformtionFromGoogleEarth(StartDate,EndDate,RequestedImageCollection,RequestedImageCollectionFilelds, 
+                                 LatPoI,LonPoT,RequiredScale):
+  PoI=ee.Geometry.Point(LonPoT, LatPoI)
+  ImageCollectionName=ee.ImageCollection(RequestedImageCollection)
+  DateFilteredImageCollectionName=ImageCollectionName.select(RequestedImageCollectionFilelds).filterDate(StartDate,EndDate)
+  df = pd.DataFrame((DateFilteredImageCollectionName).getRegion(PoI,RequiredScale).getInfo())
+  headers = df.iloc[0]
+  df = pd.DataFrame(df.values[1:], columns=headers)
+  return (df)
 
-lc = ee.ImageCollection('MODIS/006/MCD12Q1')# Import the MODIS land cover collection.
-lst = ee.ImageCollection('MODIS/006/MOD11A1')# Import the MODIS land surface temperature collection.
-elv = ee.Image('USGS/SRTMGL1_003')# Import the USGS ground elevation image.
-
-lst = lst.select('LST_Day_1km', 'QC_Day').filterDate(i_date, f_date)# Selection of appropriate bands and dates for LST.
-
-u_lat = 21.0807514
-u_lon = 40.2975893
-u_poi = ee.Geometry.Point(u_lon, u_lat)# Define the urban location of interest as a point near Lyon, France. 
-
-r_lon = 40.3173763
-r_lat = 21.3618329
-r_poi = ee.Geometry.Point(r_lon, r_lat) # Define the rural location of interest as a point away from the city.
-
-
-scale = 1000  # scale in meters
-elv_urban_point = elv.sample(u_poi, scale).first().get('elevation').getInfo()# Print the elevation near Lyon, France.
-st.write(elv_urban_point)
+X=GetInformtionFromGoogleEarth('2015-01-01','2015-02-01','ECMWF/ERA5_LAND/HOURLY',
+                                                                        ['leaf_area_index_high_vegetation','soil_temperature_level_1','soil_temperature_level_2',
+                                                                         'lake_ice_depth','lake_ice_temperature','lake_mix_layer_depth','skin_reservoir_content',
+                                                                         'leaf_area_index_low_vegetation','volumetric_soil_water_layer_2','evaporation_from_bare_soil',
+                                                                         'runoff'],21.0807514,40.2975893,1000)
+st.write(X)
