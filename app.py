@@ -10,4 +10,4 @@ from google.oauth2 import service_account
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gee_service_account"]
 )
-client = ee.Client(credentials=credentials)
+client = ee.ee.ServiceAccountCredentials(credentials=credentials)
