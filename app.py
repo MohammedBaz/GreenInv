@@ -18,6 +18,7 @@ PathtoKeyFile=os.path.join(os.getcwd(), "key.json")
 with open(PathtoKeyFile, 'w') as outfile:
     json.dump(dictionary, outfile)
 
+import ee
 EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['Google_Earth_Engine']['client_email'], PathtoKeyFile)
 ee.Initialize(EE_CREDENTIALS)
 
