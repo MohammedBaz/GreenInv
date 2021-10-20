@@ -12,7 +12,7 @@ dictionary = {'type':st.secrets['Google_Earth_Engine']['type'],
               'auth_provider_x509_cert_url':st.secrets['Google_Earth_Engine']['auth_provider_x509_cert_url'],
               'client_x509_cert_url':st.secrets['Google_Earth_Engine']['client_x509_cert_url']
              }
-
+st.write(st.secrets['Google_Earth_Engine']['type'])
 #https://signup.earthengine.google.com/#!/service_accounts
 PathtoKeyFile=os.path.join(os.getcwd(), "key.json")
 with open(os.path.join(os.getcwd(), "key.json"), 'w') as outfile:
