@@ -1,16 +1,17 @@
 import json
-dictionary = {'type':34,
-              'project_id':61,
-              'private_key_id':82,
-              'private_key':34,
-              'client_email':61,
-              'client_id':82,
-              'auth_uri':34,
-              'token_uri':61,
-              'auth_provider_x509_cert_url':82,
-              'client_x509_cert_url':123
+dictionary = {'type':st.secrets['Google_Earth_Engine']['type'],
+              'project_id':st.secrets['Google_Earth_Engine']['project_id'],
+              'private_key_id':st.secrets['Google_Earth_Engine']['private_key_id'],
+              'private_key':st.secrets['Google_Earth_Engine']['private_key'],
+              'client_email':st.secrets['Google_Earth_Engine']['client_email'],
+              'client_id':st.secrets['Google_Earth_Engine']['client_id'],
+              'auth_uri':st.secrets['Google_Earth_Engine']['auth_uri'],
+              'token_uri':st.secrets['Google_Earth_Engine']['token_uri'],
+              'auth_provider_x509_cert_url':st.secrets['Google_Earth_Engine']['auth_provider_x509_cert_url'],
+              'client_x509_cert_url':st.secrets['Google_Earth_Engine']['client_x509_cert_url']
              }
-
+y = json.loads(dictionary)
+st.write(y)
 
 
 import ee
