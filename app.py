@@ -1,4 +1,5 @@
 import json
+import streamlit as st
 dictionary = {'type':st.secrets['Google_Earth_Engine']['type'],
               'project_id':st.secrets['Google_Earth_Engine']['project_id'],
               'private_key_id':st.secrets['Google_Earth_Engine']['private_key_id'],
