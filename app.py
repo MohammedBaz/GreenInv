@@ -1,4 +1,4 @@
-import ee
+import ee as googleearth
 import json
 import streamlit as st
 import os 
@@ -19,6 +19,6 @@ PathtoKeyFile=os.path.join(os.getcwd(), "key.json")
 with open(PathtoKeyFile, 'w') as outfile:
     json.dump(dictionary, outfile)
 
-EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['Google_Earth_Engine']['client_email'], PathtoKeyFile)
-ee.Initialize(EE_CREDENTIALS)
+EE_CREDENTIALS = googleearth.ServiceAccountCredentials(st.secrets['Google_Earth_Engine']['client_email'], PathtoKeyFile)
+googleearth.Initialize(EE_CREDENTIALS)
 
