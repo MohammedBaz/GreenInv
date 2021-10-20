@@ -40,3 +40,20 @@ X=GetInformtionFromGoogleEarth('2015-01-01','2015-02-01','ECMWF/ERA5_LAND/HOURLY
                                                                          'runoff'],21.0807514,40.2975893,1000)
 st.write(X)
 
+
+#############################################################Page Layout starts here############################################################
+
+#st.set_page_config(layout="wide") just change the page to wide mode
+#st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
+
+st.title("This is a POC app dedicated to Green initiative")
+st.header("                                                   ")
+#One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
+MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
+SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
+Sub2MainPageDescription=st.empty() # same as above
+Sub3MainPageDescription=st.empty() # same as above
+
+with st.sidebar.expander("Please select the dataset we wish to work on"):
+  ption = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
+  st.write('You selected:', option)
