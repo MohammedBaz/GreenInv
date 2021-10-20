@@ -10,7 +10,9 @@ st.write(os.environ)
 from google.oauth2 import service_account
 
 newfile=os.path.join(os.getcwd(), ".streamlit")
-newnewfile=os.path.join(newfile, ".secrets.toml")
+st.write(os.listdir(newfile))
+
+#newnewfile=os.path.join(newfile, ".secrets.toml")
 
 st.write(os.getcwd()+"/.streamlit/secrets.toml")
 
