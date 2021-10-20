@@ -15,10 +15,11 @@ dictionary = {'type':st.secrets['Google_Earth_Engine']['type'],
 
 jsonString = json.dumps(dictionary)
 st.write(jsonString)
+
 import os 
 PathtoKeyFile=os.path.join(os.getcwd(), "key.json")
 with open(PathtoKeyFile, 'w') as outfile:
-    json.dump(data, outfile)
+    json.dump(dictionary, outfile)
 
 
 import ee
