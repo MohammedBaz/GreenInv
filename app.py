@@ -3,7 +3,7 @@ import streamlit as st
 
 from google.oauth2 import service_account
 
-st.write((st.secrets["gee_service_account"]["client_email"])
+st.write(st.secrets["gee_service_account"]["client_email"])
 # Create API client.
 
 #EE_PRIVATE_KEY_FILE = 'privatekey.json'
