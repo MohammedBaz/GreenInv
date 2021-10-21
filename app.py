@@ -116,7 +116,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
 import folium
 import streamlit_folium
 m = folium.Map(location=[Latitude,Longitude], zoom_start=16)
-Map.add_basemap("TERRAIN")
+m.add_basemap("TERRAIN")
 # Retrieve Earth Engine dataset
 dem = ee.Image("USGS/SRTMGL1_003")
 # Set visualization parameters
