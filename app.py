@@ -57,3 +57,6 @@ Sub3MainPageDescription=st.empty() # same as above
 with st.sidebar.expander("Please select the dataset we wish to work on"):
   option = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
   st.write('You selected:', option)
+  if option is not None:
+    d = st.date_input("Plase select the date range",datetime.date(2019, 7, 6))
+   
