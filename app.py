@@ -54,7 +54,12 @@ def PlotBandTimeSeries(TimeSeries,ValueofBand):
   fig, ax = plt.subplots()
   plt.plot(TimeSeries, ValueofBand)
   st.pyplot(fig)
-
+  
+def PlotlyBandTimeSeries(TimeSeries,ValueofBand):
+      import plotly.express as px
+      fig = px.line(results, x='datetime', y=ListofBands)
+      st.plotly_chart(fig)
+    
  
 #############################################################Read the datasets#################################################################
 
@@ -102,12 +107,9 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
       results[ListofBands]=TemperatureCorrectionandConversionto(results[ListofBands])
       
     
-    PlotBandTimeSeries(results['datetime'], results[ListofBands])
-    
+    #PlotBandTimeSeries(results['datetime'], results[ListofBands])
     with SubMainPageDescription:
-      import plotly.express as px
-      fig = px.line(results, x='datetime', y=ListofBands)
-      st.plotly_chart(fig)
+      PlotlyBandTimeSeries(results['datetime'], results[ListofBands])
 
 
 
