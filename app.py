@@ -62,13 +62,13 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
   InputedBand = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
 
   if InputedBand is not None:
-    SelectedBand=BandInformation[BandInformation['Description']==InputedBand]
+    RowIndex=BandInformation[BandInformation['Description']=='Nighttime Land Surface Temperature'].index[0]
     
-    ImageCollectionName=SelectedBand['ImageCollection'][0]
-    ListofBands=SelectedBand['Bands'][0]
-    Resultion=SelectedBand['Resultion'][0]
-    StartDate=SelectedBand['StartDate'][0]
-    EndDate=SelectedBand['EndDate'][0]
+    ImageCollectionName=BandInformation['ImageCollection'][RowIndex]
+    ListofBands=BandInformation['Bands'][RowIndex]
+    Resultion=BandInformation['Resultion'][RowIndex]
+    StartDate=BandInformation['StartDate'][RowIndex]
+    EndDate=BandInformation['EndDate'][RowIndex]
     Latitude=21.0807514
     Longitude= 40.2975893
     
