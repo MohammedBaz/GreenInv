@@ -104,6 +104,10 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     
     PlotBandTimeSeries(results['datetime'], results[ListofBands])
     
+    import plotly.express as px
+    
+    fig = px.line(results, x='datetime', y=ListofBands)
+    st.plotly_chart(fig)
 
 
 
