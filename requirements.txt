@@ -10,6 +10,6 @@ streamlit
 streamlit-folium
 streamlit-keplergl
 owslib
-
+kwargs
 geemap
 leafmap
