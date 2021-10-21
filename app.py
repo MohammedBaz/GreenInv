@@ -39,7 +39,11 @@ def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultion,Start
   resultsdf = resultsdf[['time','datetime',  *ListofBands]]
   return resultsdf
 
-
+import matplotlib.pyplot as plt
+def PlotBandTimeSeries(TimeSeries,ValueofBand):     
+  fig, ax = plt.subplots()
+  plt.plot(TimeSeries, ValueofBand)
+  st.pyplot(fig)
 
  
 #############################################################Read the datasets#################################################################
@@ -84,13 +88,10 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
                                      EndDate=EndDate,
                                      Latitude=Latitude,
                                      Longitude=Longitude)
-    
+    PlotBandTimeSeries(results['datetime'], results[bandname])
     st.write("The date selected:", results)
 
-  import matplotlib.pyplot as plt
-  fig, ax = plt.subplots()
-  plt.plot(results['datetime'], results[ListofBands])
-  st.pyplot(fig)
+
 
     
     
