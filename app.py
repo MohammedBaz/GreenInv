@@ -116,6 +116,23 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
 import folium
 import streamlit_folium
 m = folium.Map(location=[Latitude,Longitude], zoom_start=16)
+def add_ee_layer(self, ee_image_object, vis_params, name):
+  map_id_dict = ee.Image(ee_image_object).getMapId(vis_params)
+  folium.raster_layers.TileLayer(
+      tiles=map_id_dict['tile_fetcher'].url_format,
+      attr='Map Data &copy; <a href="https://earthengine.google.com/">Google Earth Engine</a>',
+      name=name,
+      overlay=True,
+      control=True
+  ).add_to(self)
+
+folium.Map.add_ee_layer = add_ee_layer
+
+
+
+
+
+""""
 tile_layer = folium.TileLayer(
     tiles="https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png",
     attr='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -125,7 +142,7 @@ tile_layer = folium.TileLayer(
     opacity=0.7
 )
 tile_layer.add_to(m)
-
+"""
 
 streamlit_folium.folium_static(m)
 
