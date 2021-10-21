@@ -39,6 +39,16 @@ def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultion,Start
   resultsdf = resultsdf[['time','datetime',  *ListofBands]]
   return resultsdf
 
+def TemperatureCorrectionandConversionto(RawData):
+   #This funcion is applied to LST_Day_1km bands of MODIS/006/MOD11A1 image collection as
+   # the returned readings need to multiplied by correction factor and converted to Celsius
+   # here we ignore the QC_Day but it need to be consider at production time, good source can be
+   # found at https://spatialthoughts.com/2021/08/19/qa-bands-bitmasks-gee/
+   requiredresults =  0.02*RawData - 273.15
+   return requiredresults
+
+
+
 import matplotlib.pyplot as plt
 def PlotBandTimeSeries(TimeSeries,ValueofBand):     
   fig, ax = plt.subplots()
@@ -88,8 +98,12 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
                                      EndDate=EndDate,
                                      Latitude=Latitude,
                                      Longitude=Longitude)
+    if (ListofBands=='LST_Day_1km' or 'LST_Night_1km'):
+      results[ListofBands]=TemperatureCorrectionandConversionto(results[ListofBands])
+
+    
     PlotBandTimeSeries(results['datetime'], results[ListofBands])
-    st.write("The date selected:", ListofBands)
+    
 
 
 
