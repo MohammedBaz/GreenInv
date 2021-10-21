@@ -204,6 +204,34 @@ folium.Marker((52, 5.4), tooltip="right").add_to(fg_2)
 folium.LayerControl(collapsed=False).add_to(m)
 streamlit_folium.folium_static(m)
 ##########################################
+from owslib.wms import WebMapService
+
+
+url = "https://pae-paha.pacioos.hawaii.edu/thredds/wms/dhw_5km?service=WMS"
+
+web_map_services = WebMapService(url)
+
+print("\n".join(web_map_services.contents.keys()))
+layer = "CRW_SST"
+wms = web_map_services.contents[layer]
+
+name = wms.title
+
+lon = (wms.boundingBox[0] + wms.boundingBox[2]) / 2.0
+lat = (wms.boundingBox[1] + wms.boundingBox[3]) / 2.0
+center = lat, lon
+
+time_interval = "{0}/{1}".format(
+    wms.timepositions[0].strip(), wms.timepositions[-1].strip()
+)
+style = "boxfill/sst_36"
+
+if style not in wms.styles:
+    style = None
+
+
+
+
 import folium
 from folium import plugins
 
