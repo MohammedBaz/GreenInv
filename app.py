@@ -139,7 +139,7 @@ image_viz_params = {
 }
 
 # Define a map centered on San Francisco Bay.
-map_l8 = folium.Map(location=[37.5010, -122.1899], zoom_start=10)
+map_l8 = folium.Map(location=[Longitude, Latitude], zoom_start=10)
 
 # Add the image layer to the map and display it.
 map_l8.add_ee_layer(image, image_viz_params, 'false color composite')
