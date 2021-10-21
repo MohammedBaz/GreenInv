@@ -203,6 +203,32 @@ folium.Marker((52, 5.4), tooltip="right").add_to(fg_2)
 
 folium.LayerControl(collapsed=False).add_to(m)
 streamlit_folium.folium_static(m)
+##########################################
+import folium
+from folium import plugins
 
+lon, lat = -50, -40
+
+m = folium.Map(location=[lat, lon], zoom_start=5, control_scale=True)
+
+w = folium.raster_layers.WmsTileLayer(
+    url=url,
+    name=name,
+    styles=style,
+    fmt="image/png",
+    transparent=True,
+    layers=layer,
+    overlay=True,
+    COLORSCALERANGE="1.2,28",
+)
+
+w.add_to(m)
+
+time = plugins.TimestampedWmsTileLayers(w, period="PT1H", time_interval=time_interval)
+
+time.add_to(m)
+
+folium.LayerControl().add_to(m)
+streamlit_folium.folium_static(m)
 
 
