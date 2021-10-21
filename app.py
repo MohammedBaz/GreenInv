@@ -68,7 +68,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     EndDate=SelectedBand['EndDate'][0]
     Lat=21.0807514
     Long= 40.2975893
-   
     
-    d = st.date_input("Plase select the date range",min_value=datetime.date(2019, 7, 6),max_value=datetime.date(2020, 7, 6))
+    TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
+    st.write("The date selected:", TimeSelector)
    
