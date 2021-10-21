@@ -76,8 +76,8 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     results=GetInformtionFromGoogleEarth(ImageCollectionName=ImageCollectionName,
                                  ListofBands=ListofBands,
                                  Resultion=Resultion,
-                                 StartDate=datetime.datetime(TimeSelector[0]),
-                                 EndDate=datetime.datetime(TimeSelector[1]),
+                                 StartDate=TimeSelector[0],
+                                 EndDate=TimeSelector[1],
                                  Lat=Lat,
                                  Long=Long)
     
