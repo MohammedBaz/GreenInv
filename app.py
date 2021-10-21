@@ -260,3 +260,4 @@ folium.LayerControl().add_to(m)
 streamlit_folium.folium_static(m)
 #https://nbviewer.org/github/python-visualization/folium/blob/master/examples/WmsTimeDimension.ipynb
 #https://pythonwife.com/map-box-in-streamlit/
+#https://github.com/nikkisharma536/streamlit_app/blob/master/covid_data.py
