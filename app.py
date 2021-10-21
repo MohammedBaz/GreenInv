@@ -114,10 +114,11 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
       PlotlyBandTimeSeries(results['datetime'], results[ListofBands],InputedBand)
       
 import folium
+import streamlit_folium
 m = folium.Map(location=[Longitude, Latitude], zoom_start=16)
 tooltip = "Liberty Bell"
 folium.Marker([Longitude, Latitude], popup="Liberty Bell", tooltip=tooltip).add_to(m)
-folium.folium_static(m)
+streamlit_folium.folium_static(m)
       
 
 
