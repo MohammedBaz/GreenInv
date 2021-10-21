@@ -22,27 +22,25 @@ import ee
 EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], PathtoKeyFile)
 ee.Initialize(EE_CREDENTIALS)
 
-import pandas as pd
-def GetInformtionFromGoogleEarth(StartDate,EndDate,RequestedImageCollection,RequestedImageCollectionFilelds, 
-                                 LatPoI,LonPoT,RequiredScale):
-  PoI=ee.Geometry.Point(LonPoT, LatPoI)
-  ImageCollectionName=ee.ImageCollection(RequestedImageCollection)
-  DateFilteredImageCollectionName=ImageCollectionName.select(RequestedImageCollectionFilelds).filterDate(StartDate,EndDate)
-  df = pd.DataFrame((DateFilteredImageCollectionName).getRegion(PoI,RequiredScale).getInfo())
-  headers = df.iloc[0]
-  df = pd.DataFrame(df.values[1:], columns=headers)
-  return (df)
-"""
-X=GetInformtionFromGoogleEarth('2015-01-01','2015-02-01','ECMWF/ERA5_LAND/HOURLY',
-                                                                        ['leaf_area_index_high_vegetation','soil_temperature_level_1','soil_temperature_level_2',
-                                                                         'lake_ice_depth','lake_ice_temperature','lake_mix_layer_depth','skin_reservoir_content',
-                                                                         'leaf_area_index_low_vegetation','volumetric_soil_water_layer_2','evaporation_from_bare_soil',
-                                                                         'runoff'],21.0807514,40.2975893,1000)
-st.write(X)
-""" 
+import pandas
+def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultions,StartDate,EndDate,Lat,Long):
+  PoI = ee.Geometry.Point(Long, Lat) # Cast Lat and Long into required class
+  ImageCollection=ee.ImageCollection(ImageCollectionName) # get the image collecton from google earthengine
+  FilteredImageCollections = lst.select(ListofBands).filterDate(StartDate, EndDate) # apply filter(s):time and/or bands
+  results=FilteredImageCollections.getRegion(PoI, Resultion).getInfo() # get the time series of the required bands
+  resultsdf=pandas.DataFrame(results) #Cast the results getten from the above to dataframe
+  headers = resultsdf.iloc[0] # set the header of dataframe to the first line of the results
+  resultsdf = pd.DataFrame(resultsdf.values[1:], columns=headers) # assign the results to the dataframe and use headers as columns names
+  resultsdf = resultsdf.dropna() # drops all rows with no data 
+  for band in ListofBands: # Convert the data to numeric values
+        resultsdf[band] = pandas.to_numeric(resultsdf[band], errors='coerce')
+  resultsdf['datetime'] = pandas.to_datetime(resultsdf['time'], unit='ms') # Convert the time field into a datetime.
+  resultsdf = resultsdf[['time','datetime',  *ListofBands]]
+  return resultsdf
+ 
 #############################################################Read the datasets#################################################################
-import pandas as pd 
-Googleearthbands= pd.read_excel('Googleearthbands.xlsx')
+
+BandInformation=pandas.read_csv('BandInformation.csv')
 #############################################################Page Layout starts here############################################################
 
 #st.set_page_config(layout="wide") just change the page to wide mode
@@ -57,9 +55,5 @@ Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 
 with st.sidebar.expander("Please select the dataset we wish to work on"):
-  option = st.selectbox('How would you like to be contacted?',Googleearthbands['Dataset'])
+  option = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
   st.write('You selected:', option)
-
-
-
-  #st.write(GoogleEarthBands)
