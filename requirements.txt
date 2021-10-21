@@ -4,3 +4,5 @@ matplotlib
 plotly
 folium
 streamlit_folium
+geemap.foliumap
+geemap
