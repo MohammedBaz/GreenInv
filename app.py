@@ -88,7 +88,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
                                      EndDate=EndDate,
                                      Latitude=Latitude,
                                      Longitude=Longitude)
-    PlotBandTimeSeries(results['datetime'], results[bandname])
+    PlotBandTimeSeries(results['datetime'], results['ListofBands'])
     st.write("The date selected:", results)
 
 
