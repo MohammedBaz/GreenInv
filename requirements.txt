@@ -9,4 +9,4 @@ keplergl
 streamlit
 streamlit-folium
 streamlit-keplergl
-owslib.wms
+owslib
