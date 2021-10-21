@@ -111,7 +111,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     
     #PlotBandTimeSeries(results['datetime'], results[ListofBands])
     with SubMainPageDescription:
-      PlotlyBandTimeSeries(results['datetime'], results[ListofBands],option)
+      PlotlyBandTimeSeries(results['datetime'], results[ListofBands],InputedBand)
 
 
 
