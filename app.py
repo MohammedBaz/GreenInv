@@ -55,11 +55,11 @@ def PlotBandTimeSeries(TimeSeries,ValueofBand):
   plt.plot(TimeSeries, ValueofBand)
   st.pyplot(fig)
   
-def PlotlyBandTimeSeries(TimeSeries,ValueofBand):
+def PlotlyBandTimeSeries(TimeSeries,ValueofBand,yaxesTitle):
       import plotly.express as px
       fig = px.line(results, x='datetime', y=ListofBands)
       fig.update_xaxes(title_text='Time')
-      fig.update_yaxes(title_text='Value A')
+      fig.update_yaxes(title_text=yaxesTitle)
       st.plotly_chart(fig)
     
  
@@ -111,7 +111,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     
     #PlotBandTimeSeries(results['datetime'], results[ListofBands])
     with SubMainPageDescription:
-      PlotlyBandTimeSeries(results['datetime'], results[ListofBands])
+      PlotlyBandTimeSeries(results['datetime'], results[ListofBands],option)
 
 
 
