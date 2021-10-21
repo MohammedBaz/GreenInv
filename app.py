@@ -71,6 +71,13 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Latitude=21.0807514
     Longitude= 40.2975893
     
+    ImageCollectionName='MODIS/006/MOD11A1'
+    ListofBands=['LST_Day_1km', 'QC_Day']
+    Resultion=1000
+    StartDate='2020-10-19'
+    EndDate='2021-10-1'
+    Latitude=21.0807514
+    Longitude= 40.2975893
     
     #TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     #st.write("The strating date is:",TimeSelector[0])
