@@ -112,24 +112,50 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     #PlotBandTimeSeries(results['datetime'], results[ListofBands])
     with SubMainPageDescription:
       PlotlyBandTimeSeries(results['datetime'], results[ListofBands],InputedBand)
+################################################################
 
-import geemap.foliumap as geemap
+import folium
+import streamlit_folium
 
-# Create an interactive map
-Map = geemap.Map(plugin_Draw=True, Draw_export=False)
-# Add a basemap
-Map.add_basemap("TERRAIN")
-# Retrieve Earth Engine dataset
-dem = ee.Image("USGS/SRTMGL1_003")
-# Set visualization parameters
-vis_params = {
-    "min": 0,
-    "max": 4000,
-    "palette": ["006633", "E5FFCC", "662A00", "D8D8D8", "F5F5F5"],
-}
-# Add the Earth Engine image to the map
-Map.addLayer(dem, vis_params, "SRTM DEM", True, 0.5)
-# Add a colorbar to the map
-Map.add_colorbar(vis_params["palette"], 0, 4000, caption="Elevation (m)")
-# Render the map using streamlit
-Map.to_streamlit()
+# Define a method for displaying Earth Engine image tiles to folium map.
+def add_ee_layer(self, ee_image_object, vis_params, name):
+  map_id_dict = ee.Image(ee_image_object).getMapId(vis_params)
+  folium.raster_layers.TileLayer(
+      tiles=map_id_dict['tile_fetcher'].url_format,
+      attr='Map Data &copy; <a href="https://earthengine.google.com/">Google Earth Engine, USDA National Agriculture Imagery Program</a>',
+      name=name,
+      overlay=True,
+      control=True).add_to(self)
+
+# Add an Earth Engine layer drawing method to folium.
+folium.Map.add_ee_layer = add_ee_layer
+
+# Import a NAIP image for the area and date of interest.
+naip_img = ee.ImageCollection('USDA/NAIP/DOQQ').filterDate(
+    '2016-01-01',
+    '2017-01-01').filterBounds(ee.Geometry.Point([-118.6407, 35.9665])).first()
+
+# Display the NAIP image to the folium map.
+m = folium.Map(location=[35.9665, -118.6407], tiles='Stamen Terrain', zoom_start=16)
+m.add_ee_layer(naip_img, None, 'NAIP image, 2016')
+
+# Add the point of interest to the map.
+folium.Circle(
+    radius=15,
+    location=[35.9665, -118.6407],
+    color='yellow',
+    fill=False,
+).add_to(m)
+
+# Add the AOI to the map.
+folium.GeoJson(
+  aoi.getInfo(),
+  name='geojson',
+  style_function=lambda x: {'fillColor': '#00000000', 'color': '#000000'},
+).add_to(m)
+
+# Add a lat lon popup.
+folium.LatLngPopup().add_to(m)
+
+# Display the map.
+streamlit_folium.folium_static(m)
