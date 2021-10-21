@@ -72,7 +72,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Latitude=21.0807514
     Longitude= 40.2975893
     
-    TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
+    #TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     #st.write("The strating date is:",TimeSelector[0])
     #st.write("The end date is",TimeSelector[1])
     results=results=GetInformtionFromGoogleEarth(ImageCollectionName=ImageCollectionName,
