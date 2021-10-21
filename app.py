@@ -169,7 +169,7 @@ folium.LatLngPopup().add_to(m)
 st.write(folium.LatLngPopup())
 
 formatter = "function(num) {return L.Util.formatNum(num, 3) + ' º ';};"
-
+st.write(formatter)
 MousePosition(
     position="topright",
     separator=" | ",
