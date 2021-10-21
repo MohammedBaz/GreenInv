@@ -117,6 +117,9 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
 import folium
 import streamlit_folium
 
+aoi = ee.FeatureCollection('EPA/Ecoregions/2013/L3').filter(
+    ee.Filter.eq('na_l3name', 'Sierra Nevada')).geometry()
+
 # Define a method for displaying Earth Engine image tiles to folium map.
 def add_ee_layer(self, ee_image_object, vis_params, name):
   map_id_dict = ee.Image(ee_image_object).getMapId(vis_params)
@@ -156,6 +159,7 @@ folium.GeoJson(
 
 # Add a lat lon popup.
 folium.LatLngPopup().add_to(m)
+st.write(folium.LatLngPopup())
 
 # Display the map.
 streamlit_folium.folium_static(m)
