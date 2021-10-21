@@ -23,8 +23,9 @@ EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], Pathto
 ee.Initialize(EE_CREDENTIALS)
 st.write("____________________________________ Initalised______________________________________________")
 import pandas
-def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultion,StartDate,EndDate,Lat,Long):
-  PoI = ee.Geometry.Point(Long, Lat) # Cast Lat and Long into required class
+
+def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultion,StartDate,EndDate,Latitude,Longitude):
+  PoI = ee.Geometry.Point(Longitude, Latitude) # Cast Lat and Long into required class
   ImageCollection=ee.ImageCollection(ImageCollectionName) # get the image collecton from google earthengine
   FilteredImageCollections = ImageCollection.select(ListofBands).filterDate(StartDate, EndDate) # apply filter(s):time and/or bands
   results=FilteredImageCollections.getRegion(PoI, Resultion).getInfo() # get the time series of the required bands
@@ -67,8 +68,9 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Resultion=SelectedBand['Resultion'][0]
     StartDate='2020-10-19'
     EndDate='2021-10-1'
-    Lat=21.0807514
-    Long= 40.2975893
+    Latitude=21.0807514
+    Longitude= 40.2975893
+    
     
     #TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     #st.write("The strating date is:",TimeSelector[0])
@@ -78,7 +80,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
                                  Resultion=Resultion,
                                  StartDate=StartDate,
                                  EndDate=EndDate,
-                                 Lat=Lat,
-                                 Long=Long)
+                                 Latitude=Latitude,
+                                 Longitude=Longitude)
     
     st.write("The date selected:", results)
