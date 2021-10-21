@@ -168,6 +168,21 @@ folium.GeoJson(
 folium.LatLngPopup().add_to(m)
 st.write(folium.LatLngPopup())
 
+formatter = "function(num) {return L.Util.formatNum(num, 3) + ' º ';};"
+
+MousePosition(
+    position="topright",
+    separator=" | ",
+    empty_string="NaN",
+    lng_first=True,
+    num_digits=20,
+    prefix="Coordinates:",
+    lat_formatter=formatter,
+    lng_formatter=formatter,
+).add_to(m)
+
+
+
 # Display the map.
 streamlit_folium.folium_static(m)
 
