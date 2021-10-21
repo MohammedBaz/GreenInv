@@ -128,8 +128,7 @@ def add_ee_layer(self, ee_image_object, vis_params, name):
 
 folium.Map.add_ee_layer = add_ee_layer
 
-image = ee.Image('https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/thumbnails/dd7c2b8c33ef77ecbfbd19846975ccf7-1903a90284db27e0a676d15a93820f90:getPixels')
-
+image = ee.Image('LANDSAT/LC08/C01/T1_TOA/LC08_044034_20140318')
 # Define the visualization parameters.
 image_viz_params = {
     'bands': ['B5', 'B4', 'B3'],
