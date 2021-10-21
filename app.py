@@ -39,6 +39,8 @@ def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultion,Start
   resultsdf = resultsdf[['time','datetime',  *ListofBands]]
   return resultsdf
 
+
+
  
 #############################################################Read the datasets#################################################################
 
@@ -75,7 +77,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     #TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     #st.write("The strating date is:",TimeSelector[0])
     #st.write("The end date is",TimeSelector[1])
-    results=results=GetInformtionFromGoogleEarth(ImageCollectionName=ImageCollectionName,
+    results=GetInformtionFromGoogleEarth(ImageCollectionName=ImageCollectionName,
                                      ListofBands=[ListofBands],
                                      Resultion=int(Resultion),
                                      StartDate=StartDate,
@@ -84,3 +86,12 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
                                      Longitude=Longitude)
     
     st.write("The date selected:", results)
+
+  import matplotlib.pyplot as plt
+  fig, ax = plt.subplots()
+  plt.plot(results['datetime'], results[ListofBands])
+  st.pyplot(fig)
+
+    
+    
+    
