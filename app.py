@@ -143,7 +143,7 @@ map_l8 = folium.Map(location=[37.5010, -122.1899], zoom_start=10)
 
 # Add the image layer to the map and display it.
 map_l8.add_ee_layer(image, image_viz_params, 'false color composite')
-display(map_l8)
+streamlit_folium.folium_static(map_l8)
 
 
 
