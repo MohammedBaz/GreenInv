@@ -59,7 +59,7 @@ Sub3MainPageDescription=st.empty() # same as above
 import datetime
 with st.sidebar.expander("Please select the dataset we wish to work on"):
   option = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
-  st.write('You selected:', option)
+
   if option is not None:
     SelectedBand=BandInformation[BandInformation['Description']==option]
     ImageCollectionName=SelectedBand['ImageCollection'][0]
@@ -71,7 +71,8 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Long= 40.2975893
     
     TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
-    
+    st.write(TimeSelector[0],TimeSelector[1])
+    """
     results=GetInformtionFromGoogleEarth(ImageCollectionName=ImageCollectionName,
                                  ListofBands=ListofBands,
                                  Resultion=Resultion,
@@ -81,4 +82,4 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
                                  Long=Long)
     
     st.write("The date selected:", results)
-   
+   """
