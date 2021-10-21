@@ -139,7 +139,7 @@ with st.echo():
     
     
     def handle_interaction(**kwargs):
-    latlon = kwargs.get('coordinates')
+      latlon = kwargs.get('coordinates')
     if kwargs.get('type') == 'mousemove':
         latlon_label.value = "Coordinates: {}".format(str(latlon))
     elif kwargs.get('type') == 'click':
