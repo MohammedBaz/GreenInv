@@ -166,3 +166,24 @@ st.write(folium.LatLngPopup())
 
 # Display the map.
 streamlit_folium.folium_static(m)
+
+##########################
+m = plugins.DualMap(location=(52.1, 5.1), tiles=None, zoom_start=8)
+
+folium.TileLayer("cartodbpositron").add_to(m.m2)
+folium.TileLayer("openstreetmap").add_to(m)
+
+fg_both = folium.FeatureGroup(name="markers_both").add_to(m)
+fg_1 = folium.FeatureGroup(name="markers_1").add_to(m.m1)
+fg_2 = folium.FeatureGroup(name="markers_2").add_to(m.m2)
+
+icon_red = folium.Icon(color="red")
+folium.Marker((52, 5), tooltip="both", icon=icon_red).add_to(fg_both)
+folium.Marker((52.4, 5), tooltip="left").add_to(fg_1)
+folium.Marker((52, 5.4), tooltip="right").add_to(fg_2)
+
+folium.LayerControl(collapsed=False).add_to(m)
+streamlit_folium.folium_static(m)
+
+
+
