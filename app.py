@@ -71,7 +71,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Long= 40.2975893
     
     TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
-    st.write(TimeSelector[0],TimeSelector[1])
+    st.write("The strating date is:,"TimeSelector[0],"The end date is,"TimeSelector[1])
     """
     results=GetInformtionFromGoogleEarth(ImageCollectionName=ImageCollectionName,
                                  ListofBands=ListofBands,
