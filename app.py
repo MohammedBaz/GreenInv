@@ -41,7 +41,8 @@ def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultion,Start
  
 #############################################################Read the datasets#################################################################
 
-BandInformation=pandas.read_csv('BandInformation.csv')
+BandInformation=pandas.read_csv('BandInformation.csv',parse_dates=['StartDate', 'EndDate'])
+
 #############################################################Page Layout starts here############################################################
 
 #st.set_page_config(layout="wide") just change the page to wide mode
@@ -69,6 +70,6 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Lat=21.0807514
     Long= 40.2975893
     
-    TimeSelector = st.date_input("Pick a date", (datetime.datetime(StartDate), datetime.datetime(EndDate)))
+    TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     st.write("The date selected:", TimeSelector)
    
