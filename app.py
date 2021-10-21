@@ -59,35 +59,28 @@ Sub3MainPageDescription=st.empty() # same as above
 
 import datetime
 with st.sidebar.expander("Please select the dataset we wish to work on"):
-  option = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
+  InputedBand = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
 
-  if option is not None:
-    SelectedBand=BandInformation[BandInformation['Description']==option]
+  if InputedBand is not None:
+    SelectedBand=BandInformation[BandInformation['Description']==InputedBand]
+    
     ImageCollectionName=SelectedBand['ImageCollection'][0]
     ListofBands=SelectedBand['Bands'][0]
     Resultion=SelectedBand['Resultion'][0]
-    StartDate='2020-10-19'
-    EndDate='2021-10-1'
-    Latitude=21.0807514
-    Longitude= 40.2975893
-    
-    ImageCollectionName='MODIS/006/MOD11A1'
-    ListofBands=['LST_Day_1km', 'QC_Day']
-    Resultion=1000
-    StartDate='2020-10-19'
-    EndDate='2021-10-1'
+    StartDate=SelectedBand['StartDate'][0]
+    EndDate=SelectedBand['EndDate'][0]
     Latitude=21.0807514
     Longitude= 40.2975893
     
     #TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     #st.write("The strating date is:",TimeSelector[0])
     #st.write("The end date is",TimeSelector[1])
-    results=GetInformtionFromGoogleEarth(ImageCollectionName=ImageCollectionName,
-                                 ListofBands=ListofBands,
-                                 Resultion=Resultion,
-                                 StartDate=StartDate,
-                                 EndDate=EndDate,
-                                 Latitude=Latitude,
-                                 Longitude=Longitude)
+    results=results=GetInformtionFromGoogleEarth(ImageCollectionName=ImageCollectionName,
+                                     ListofBands=[ListofBands],
+                                     Resultion=int(Resultion),
+                                     StartDate=StartDate,
+                                     EndDate=EndDate,
+                                     Latitude=Latitude,
+                                     Longitude=Longitude)
     
     st.write("The date selected:", results)
