@@ -116,17 +116,8 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
 import folium
 import streamlit_folium
 m = folium.Map(location=[Latitude,Longitude], zoom_start=16)
-
-# Retrieve Earth Engine dataset
 dem = ee.Image("USGS/SRTMGL1_003")
-# Set visualization parameters
-vis_params = {
-    "min": 0,
-    "max": 4000,
-    "palette": ["006633", "E5FFCC", "662A00", "D8D8D8", "F5F5F5"],
-}
-
-m.addLayer(dem, vis_params)
+dem.add_to(m)
 tooltip = "Liberty Bell"
 folium.Marker([Latitude,Longitude], popup="Liberty Bell", tooltip=tooltip).add_to(m)
 
