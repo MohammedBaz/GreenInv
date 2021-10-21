@@ -69,6 +69,6 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Lat=21.0807514
     Long= 40.2975893
     
-    TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
+    TimeSelector = st.date_input("Pick a date", (datetime.datetime(StartDate), datetime.datetime(EndDate)))
     st.write("The date selected:", TimeSelector)
    
