@@ -21,7 +21,7 @@ with open(os.path.join(os.getcwd(), "key.json"), 'w') as outfile:
 import ee
 EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], PathtoKeyFile)
 ee.Initialize(EE_CREDENTIALS)
-
+st.write("____________________________________ Initalised______________________________________________")
 import pandas
 def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultion,StartDate,EndDate,Lat,Long):
   PoI = ee.Geometry.Point(Long, Lat) # Cast Lat and Long into required class
