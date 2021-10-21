@@ -159,7 +159,7 @@ folium.GeoJson(
 
 # Add a lat lon popup.
 folium.LatLngPopup().add_to(m)
-st.write(folium.LatLngPopup().lat)
+st.write(folium.LatLngPopup())
 
 # Display the map.
 streamlit_folium.folium_static(m)
