@@ -258,5 +258,5 @@ time.add_to(m)
 
 folium.LayerControl().add_to(m)
 streamlit_folium.folium_static(m)
-
+#https://nbviewer.org/github/python-visualization/folium/blob/master/examples/WmsTimeDimension.ipynb
 
