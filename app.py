@@ -40,7 +40,9 @@ X=GetInformtionFromGoogleEarth('2015-01-01','2015-02-01','ECMWF/ERA5_LAND/HOURLY
                                                                          'runoff'],21.0807514,40.2975893,1000)
 st.write(X)
 
-
+#############################################################Read the datasets#################################################################
+import pandas as pd 
+Googleearthbands= pd.read_excel('Googleearthbands.xlsx')
 #############################################################Page Layout starts here############################################################
 
 #st.set_page_config(layout="wide") just change the page to wide mode
@@ -55,8 +57,9 @@ Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 
 with st.sidebar.expander("Please select the dataset we wish to work on"):
-  option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
+  option = st.selectbox('How would you like to be contacted?',Googleearthbands['Dataset'])
   st.write('You selected:', option)
-  
-  #GoogleEarthBands=pd.read_csv('GoogleEarthBands.csv')
+
+
+
   #st.write(GoogleEarthBands)
