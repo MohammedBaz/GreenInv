@@ -137,26 +137,10 @@ with st.echo():
     m.addLayer(dem, vis_params, 'DEM')
     m.addLayerControl()
     
-    
-    def handle_interaction(**kwargs):
-      latlon = kwargs.get('coordinates')
-    if kwargs.get('type') == 'mousemove':
-        latlon_label.value = "Coordinates: {}".format(str(latlon))
-    elif kwargs.get('type') == 'click':
-        coordinates.append(latlon)
-#         Map.add_layer(Marker(location=latlon))
-        markers.append(Marker(location=latlon))
-        marker_cluster.markers = markers
-        xy = ee.Geometry.Point(latlon[::-1])
-        elev = image.sample(xy, 30).first().get('elevation').getInfo()
-        elev_label.value = "Elevation of {}: {} m".format(latlon, elev)
-    
-    m.on_interaction(handle_interaction)
-    
-   
+    st.map(m)
     
     # call to render Folium map in Streamlit
-    folium_static(m)
+    #folium_static(m)
     
     
 
