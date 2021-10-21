@@ -100,14 +100,14 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
                                      Longitude=Longitude)
     if (ListofBands=='LST_Day_1km' or 'LST_Night_1km'):
       results[ListofBands]=TemperatureCorrectionandConversionto(results[ListofBands])
-
+      
     
     PlotBandTimeSeries(results['datetime'], results[ListofBands])
     
-    import plotly.express as px
-    
-    fig = px.line(results, x='datetime', y=ListofBands)
-    st.plotly_chart(fig)
+    with SubMainPageDescription:
+      import plotly.express as px
+      fig = px.line(results, x='datetime', y=ListofBands)
+      st.plotly_chart(fig)
 
 
 
