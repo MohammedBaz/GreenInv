@@ -23,10 +23,10 @@ EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], Pathto
 ee.Initialize(EE_CREDENTIALS)
 
 import pandas
-def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultions,StartDate,EndDate,Lat,Long):
+def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultion,StartDate,EndDate,Lat,Long):
   PoI = ee.Geometry.Point(Long, Lat) # Cast Lat and Long into required class
   ImageCollection=ee.ImageCollection(ImageCollectionName) # get the image collecton from google earthengine
-  FilteredImageCollections = lst.select(ListofBands).filterDate(StartDate, EndDate) # apply filter(s):time and/or bands
+  FilteredImageCollections = ImageCollection.select(ListofBands).filterDate(StartDate, EndDate) # apply filter(s):time and/or bands
   results=FilteredImageCollections.getRegion(PoI, Resultion).getInfo() # get the time series of the required bands
   resultsdf=pandas.DataFrame(results) #Cast the results getten from the above to dataframe
   headers = resultsdf.iloc[0] # set the header of dataframe to the first line of the results
@@ -37,6 +37,7 @@ def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultions,Star
   resultsdf['datetime'] = pandas.to_datetime(resultsdf['time'], unit='ms') # Convert the time field into a datetime.
   resultsdf = resultsdf[['time','datetime',  *ListofBands]]
   return resultsdf
+
  
 #############################################################Read the datasets#################################################################
 
@@ -59,5 +60,15 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
   option = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
   st.write('You selected:', option)
   if option is not None:
+    SelectedBand=BandInformation[BandInformation['Description']==option]
+    ImageCollectionName=SelectedBand['ImageCollection'][0]
+    ListofBands=SelectedBand['Bands'][0]
+    Resultion=SelectedBand['Resultion'][0]
+    StartDate=SelectedBand['StartDate'][0]
+    EndDate=SelectedBand['EndDate'][0]
+    Lat=21.0807514
+    Long= 40.2975893
+   
+    
     d = st.date_input("Plase select the date range",min_value=datetime.date(2019, 7, 6),max_value=datetime.date(2020, 7, 6))
    
