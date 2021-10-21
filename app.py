@@ -113,9 +113,57 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     with SubMainPageDescription:
       PlotlyBandTimeSeries(results['datetime'], results[ListofBands],InputedBand)
 ################################################################
+import streamlit as st
+from streamlit_folium import folium_static
+import folium
+
+"# streamlit-geemap"
+
+with st.echo():
+    import streamlit as st
+    from streamlit_folium import folium_static
+    import ee
+    import geemap.eefolium as geemap
+
+    m = geemap.Map()
+
+    dem = ee.Image('USGS/SRTMGL1_003')
+    # Set visualization parameters.
+    vis_params = {
+    'min': 0,
+    'max': 4000,
+    'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5']}
+
+    m.addLayer(dem, vis_params, 'DEM')
+    m.addLayerControl()
+    
+    def handle_interaction(**kwargs):
+      latlon = kwargs.get('coordinates')
+    if kwargs.get('type') == 'mousemove':
+        latlon_label.value = "Coordinates: {}".format(str(latlon))
+    elif kwargs.get('type') == 'click':
+        coordinates.append(latlon)
+#         Map.add_layer(Marker(location=latlon))
+        markers.append(Marker(location=latlon))
+        marker_cluster.markers = markers
+        xy = ee.Geometry.Point(latlon[::-1])
+        elev = image.sample(xy, 30).first().get('elevation').getInfo()
+        elev_label.value = "Elevation of {}: {} m".format(latlon, elev)
+
+        m.on_interaction(handle_interaction)
+
+
+    
+    
+    
+    # call to render Folium map in Streamlit
+    folium_static(m)
+    
+    
 
 
 
+#########################
 import folium
 import streamlit_folium
 from folium import plugins
@@ -170,31 +218,6 @@ st.write(folium.LatLngPopup())
 
 formatter = "function(num) {return L.Util.formatNum(num, 3) + ' º ';};"
 st.write(formatter)
-MousePosition(
-    position="topright",
-    separator=" | ",
-    empty_string="NaN",
-    lng_first=True,
-    num_digits=20,
-    prefix="Coordinates:",
-    lat_formatter=formatter,
-    lng_formatter=formatter,
-).add_to(m)
-
-
-def handle_interaction(**kwargs):
-    latlon = kwargs.get('coordinates')
-    if kwargs.get('type') == 'mousemove':
-        latlon_label.value = "Coordinates: {}".format(str(latlon))
-    elif kwargs.get('type') == 'click':
-        coordinates.append(latlon)
-#         Map.add_layer(Marker(location=latlon))
-        markers.append(Marker(location=latlon))
-        marker_cluster.markers = markers
-        xy = ee.Geometry.Point(latlon[::-1])
-        elev = image.sample(xy, 30).first().get('elevation').getInfo()
-        elev_label.value = "Elevation of {}: {} m".format(latlon, elev)
-m.on_interaction(handle_interaction)
 
 
 
