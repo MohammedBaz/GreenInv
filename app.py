@@ -65,19 +65,19 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     ImageCollectionName=SelectedBand['ImageCollection'][0]
     ListofBands=SelectedBand['Bands'][0]
     Resultion=SelectedBand['Resultion'][0]
-    StartDate=SelectedBand['StartDate'][0]
-    EndDate=SelectedBand['EndDate'][0]
+    StartDate='2020-10-19'
+    EndDate='2021-10-1'
     Lat=21.0807514
     Long= 40.2975893
     
-    TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
+    #TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     #st.write("The strating date is:",TimeSelector[0])
     #st.write("The end date is",TimeSelector[1])
     results=GetInformtionFromGoogleEarth(ImageCollectionName=ImageCollectionName,
                                  ListofBands=ListofBands,
                                  Resultion=Resultion,
-                                 StartDate=str(TimeSelector[0]),
-                                 EndDate=str(TimeSelector[1]),
+                                 StartDate=StartDate,
+                                 EndDate=EndDate,
                                  Lat=Lat,
                                  Long=Long)
     
