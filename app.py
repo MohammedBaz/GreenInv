@@ -116,10 +116,15 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
 import folium
 import streamlit_folium
 m = folium.Map(location=[Latitude,Longitude], zoom_start=16)
-dem = ee.Image("USGS/SRTMGL1_003")
-dem.add_to(m)
-tooltip = "Liberty Bell"
-folium.Marker([Latitude,Longitude], popup="Liberty Bell", tooltip=tooltip).add_to(m)
+tile_layer = folium.TileLayer(
+    tiles="https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png",
+    attr='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    max_zoom=19,
+    name='darkmatter',
+    control=False,
+    opacity=0.7
+)
+tile_layer.add_to(m)
 
 
 streamlit_folium.folium_static(m)
