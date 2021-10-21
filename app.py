@@ -117,6 +117,9 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
 import folium
 import streamlit_folium
 from folium import plugins
+from folium.plugins import MeasureControl
+
+
 aoi = ee.FeatureCollection('EPA/Ecoregions/2013/L3').filter(
     ee.Filter.eq('na_l3name', 'Sierra Nevada')).geometry()
 
@@ -141,7 +144,7 @@ naip_img = ee.ImageCollection('USDA/NAIP/DOQQ').filterDate(
 # Display the NAIP image to the folium map.
 m = folium.Map(location=[35.9665, -118.6407], tiles='Stamen Terrain', zoom_start=16)
 m.add_ee_layer(naip_img, None, 'NAIP image, 2016')
-
+m.add_child(MeasureControl())
 # Add the point of interest to the map.
 folium.Circle(
     radius=15,
