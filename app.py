@@ -58,6 +58,8 @@ def PlotBandTimeSeries(TimeSeries,ValueofBand):
 def PlotlyBandTimeSeries(TimeSeries,ValueofBand):
       import plotly.express as px
       fig = px.line(results, x='datetime', y=ListofBands)
+      fig.update_xaxes(title_text='Time')
+      fig.update_yaxes(title_text='Value A')
       st.plotly_chart(fig)
     
  
