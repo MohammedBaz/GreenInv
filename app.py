@@ -114,10 +114,14 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
       PlotlyBandTimeSeries(results['datetime'], results[ListofBands],InputedBand)
 ################################################################
 
+
+
 import folium
 import streamlit_folium
 from folium import plugins
 from folium.plugins import MeasureControl
+
+from folium.plugins import MousePosition
 
 
 aoi = ee.FeatureCollection('EPA/Ecoregions/2013/L3').filter(
