@@ -196,7 +196,7 @@ streamlit_folium.folium_static(m)
 from owslib.wms import WebMapService
 
 
-url = "https://pae-paha.pacioos.hawaii.edu/thredds/wms/dhw_5km?service=WMS"
+url = "https://io.apps.fao.org/geoserver/wms/ASIS/ASI_D/v1?service=WMS&version=1.3.0&request=GetCapabilities"
 
 web_map_services = WebMapService(url)
 
