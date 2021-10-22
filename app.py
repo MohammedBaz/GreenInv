@@ -201,7 +201,7 @@ url = "https://io.apps.fao.org/geoserver/wms/ASIS/ASI_D/v1?service=WMS&version=1
 web_map_services = WebMapService(url)
 
 print("\n".join(web_map_services.contents.keys()))
-layer = "CRW_SST"
+layer = "ASI_D_1991-11_S1_C:ASIS:asis_asi_d_c"
 wms = web_map_services.contents[layer]
 
 name = wms.title
