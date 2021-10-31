@@ -1,7 +1,7 @@
 import ee
 import eeAuthenticate
 eeAuthenticate.Authenticate
-from GetImageCollections import GetInformtionFromGoogleEarthUsingCoord,TemperatureCorrectionandConversionto
+from GetImageCollections import getImageCollectionbyCoords,TemperatureCorrectionandConversionto
 import pandas
 import streamlit as st
 
@@ -59,7 +59,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     #TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     #st.write("The strating date is:",TimeSelector[0])
     #st.write("The end date is",TimeSelector[1])
-    results=GetInformtionFromGoogleEarthUsingCoord(ImageCollectionName=ImageCollectionName,
+    results=getImageCollectionbyCoords(ImageCollectionName=ImageCollectionName,
                                      ListofBands=[ListofBands],
                                      Resultion=int(Resultion),
                                      StartDate=StartDate,
