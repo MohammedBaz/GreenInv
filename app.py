@@ -22,6 +22,7 @@ ee.Initialize(EE_CREDENTIALS)
 st.write("____________________________________ Initalised______________________________________________")
 
 from GetImageCollections import getImageCollectionbyCoords,TemperatureCorrectionandConversionto,getImageCollectionbyCountry
+from PlottingFuncions import plotTimeSeries1
 import pandas
 import streamlit as st
 
@@ -89,3 +90,9 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     with SubMainPageDescription:
       PlotlyBandTimeSeries(results['datetime'], results[ListofBands],InputedBand)
 ################################################################
+import altair as alt
+results=getImageCollectionbyCountry(['Saudi Arabia'],'MODIS/006/MOD13A2','NDVI','2010-01-01','2020-2-1')
+plotTimeSeries1(results,'NDVI')
+st.altair_chart(plotTimeSeries1(results,'NDVI'))
+
+
