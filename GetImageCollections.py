@@ -23,3 +23,41 @@ def TemperatureCorrectionandConversionto(RawData):
    # found at https://spatialthoughts.com/2021/08/19/qa-bands-bitmasks-gee/
    requiredresults =  0.02*RawData - 273.15
    return (requiredresults)
+#############################################https://developers.google.com/earth-engine/tutorials/community/time-series-visualization-with-altair#
+
+def create_reduce_region_function(geometry,reducer=ee.Reducer.mean(),scale=1000,crs='EPSG:4326',bestEffort=True,maxPixels=1e13,tileScale=4):
+  def reduce_region_function(img):
+    stat = img.reduceRegion(reducer=reducer,geometry=geometry,scale=scale,crs=crs,bestEffort=bestEffort,maxPixels=maxPixels,tileScale=tileScale)
+    return ee.Feature(geometry, stat).set({'millis': img.date().millis()})
+  return reduce_region_function
+
+def fc_to_dict(fc):
+  prop_names = fc.first().propertyNames()
+  prop_lists = fc.reduceColumns(
+      reducer=ee.Reducer.toList().repeat(prop_names.size()),
+      selectors=prop_names).get('list')
+  return ee.Dictionary.fromLists(prop_names, prop_lists)
+
+def add_date_info(df):
+  df['Timestamp'] = pandas.to_datetime(df['millis'], unit='ms')
+  df['Year'] = pandas.DatetimeIndex(df['Timestamp']).year
+  df['Month'] = pandas.DatetimeIndex(df['Timestamp']).month
+  df['Day'] = pandas.DatetimeIndex(df['Timestamp']).day
+  df['DOY'] = pandas.DatetimeIndex(df['Timestamp']).dayofyear
+  return df
+
+def getImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate):
+  aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.inList('ADM0_NAME', CountryName))
+  aoi=aCountry.geometry()
+  date_range=ee.DateRange(StartDate, EndDate)
+  mapBands = ee.ImageCollection(ImageCollectionName).filterDate(date_range).select(BandName)
+  reducedMapBands = create_reduce_region_function(
+    geometry=aoi, reducer=ee.Reducer.mean(), scale=1000, crs='EPSG:3310')
+  reducedMapBandsFeatureCollection = ee.FeatureCollection(mapBands.map(reducedMapBands)).filter(
+    ee.Filter.notNull(mapBands.first().bandNames()))
+  reducedMapBandsFeatureCollectionDictionary = fc_to_dict(reducedMapBandsFeatureCollection).getInfo()
+  reducedMapBandsFeatureCollectionDataFrame = pandas.DataFrame(reducedMapBandsFeatureCollectionDictionary)
+  reducedMapBandsFeatureCollectionDataFrame[BandName]=reducedMapBandsFeatureCollectionDataFrame[BandName]/10000
+  reducedMapBandsFeatureCollectionDataFrame=add_date_info(reducedMapBandsFeatureCollectionDataFrame)
+  reducedMapBandsFeatureCollectionDataFrame.head(5)
+  return(reducedMapBandsFeatureCollectionDataFrame)
