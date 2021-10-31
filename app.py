@@ -16,7 +16,7 @@ dictionary = {'type':st.secrets['type'],
              }
 PathtoKeyFile=os.path.join(os.getcwd(), "key.json") #https://signup.earthengine.google.com/#!/service_accounts
 with open(os.path.join(os.getcwd(), "key.json"), 'w') as outfile:
-json.dump(dictionary, outfile)
+  json.dump(dictionary, outfile)
 EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], PathtoKeyFile)
 ee.Initialize(EE_CREDENTIALS)
 st.write("____________________________________ Initalised______________________________________________")
