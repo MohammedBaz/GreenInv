@@ -21,7 +21,7 @@ EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], Pathto
 ee.Initialize(EE_CREDENTIALS)
 st.write("____________________________________ Initalised______________________________________________")
 
-from GetImageCollections import getImageCollectionbyCoords,TemperatureCorrectionandConversionto
+from GetImageCollections import getImageCollectionbyCoords,TemperatureCorrectionandConversionto,getImageCollectionbyCountry
 import pandas
 import streamlit as st
 
