@@ -1,5 +1,5 @@
 from eeAuthenticate import Authenticate
-Authenticate()
+Authenticate.start()
 import pandas
 
 def GetInformtionFromGoogleEarth(ImageCollectionName,ListofBands,Resultion,StartDate,EndDate,Latitude,Longitude):
