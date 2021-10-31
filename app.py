@@ -1,14 +1,8 @@
-import ee
 import eeAuthenticate
 eeAuthenticate.Authenticate
 from GetImageCollections import getImageCollectionbyCoords,TemperatureCorrectionandConversionto
 import pandas
 import streamlit as st
-
-
-
-
-
 
 import matplotlib.pyplot as plt
 def PlotBandTimeSeries(TimeSeries,ValueofBand):     
