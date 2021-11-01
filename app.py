@@ -17,7 +17,7 @@ Sub3MainPageDescription=st.empty() # same as above
 import datetime
 with st.sidebar.expander("Please select the dataset we wish to work on"):
   InputedBand = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
-"""
+  
   if InputedBand is not None:
     RowIndex=BandInformation[BandInformation['Description']==InputedBand].index[0]
     
@@ -26,41 +26,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
-    Latitude=21.0807514
-    Longitude= 40.2975893
     
-    #TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
-    #st.write("The strating date is:",TimeSelector[0])
-    #st.write("The end date is",TimeSelector[1])
-    results=getImageCollectionbyCoords(ImageCollectionName=ImageCollectionName,
-                                     ListofBands=[ListofBands],
-                                     Resultion=int(Resultion),
-                                     StartDate=StartDate,
-                                     EndDate=EndDate,
-                                     Latitude=Latitude,
-                                     Longitude=Longitude)
-    if (ListofBands=='LST_Day_1km' or 'LST_Night_1km'):
-      results[ListofBands]=TemperatureCorrectionandConversionto(results[ListofBands])
-      
-    
-    #PlotBandTimeSeries(results['datetime'], results[ListofBands])
-    with SubMainPageDescription:
-      PlotlyBandTimeSeries(results['datetime'], results[ListofBands],InputedBand)
-################################################################
-import altair as alt
-results=getImageCollectionbyCountry(['Saudi Arabia'],'MODIS/006/MOD13A2','NDVI','2010-01-01','2020-2-1')
-plotTimeSeries1(results,'NDVI')
-st.altair_chart(plotTimeSeries1(results,'NDVI'))
-#####################################
-from PIL import Image
-eresults=egetImageCollectionbyCountry(['Saudi Arabia'],'MODIS/006/MOD13A2','NDVI','2010-01-01','2020-2-1')
-#image = Image.open(eresults[1])
-st.image(eresults[1], caption='Sunrise by the mountains')
-
-#######################################
-from PIL import Image
-image = Image.open('movie.gif')
-st.image(image, caption='Sunrise by the mountains')
 ##############################
 import streamlit as st
 import base64
