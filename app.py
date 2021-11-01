@@ -21,7 +21,7 @@ EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], Pathto
 ee.Initialize(EE_CREDENTIALS)
 st.write("____________________________________ Initalised______________________________________________")
 
-from GetImageCollections import getImageCollectionbyCoords,TemperatureCorrectionandConversionto,getImageCollectionbyCountry
+from GetImageCollections import getImageCollectionbyCoords,TemperatureCorrectionandConversionto,getImageCollectionbyCountry,egetInformationfromImageCollection
 from PlottingFuncions import plotTimeSeries1
 import pandas
 import streamlit as st
@@ -94,5 +94,8 @@ import altair as alt
 results=getImageCollectionbyCountry(['Saudi Arabia'],'MODIS/006/MOD13A2','NDVI','2010-01-01','2020-2-1')
 plotTimeSeries1(results,'NDVI')
 st.altair_chart(plotTimeSeries1(results,'NDVI'))
-
-
+#####################################
+from PIL import Image
+eresults=egetImageCollectionbyCountry(['Saudi Arabia'],'MODIS/006/MOD13A2','NDVI','2010-01-01','2020-2-1')
+image = Image.open(eresults[1])
+st.image(image, caption='Sunrise by the mountains')
