@@ -13,3 +13,4 @@ owslib
 kwargs
 geemap
 leafmap
+PIL
