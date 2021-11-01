@@ -1,4 +1,4 @@
-ImageCollection,Bands,Resultion,Links,StartDate,EndDate,Description,,CorrectionFactor,Convert,ResultsUnit,comments
+ImageCollection,Bands,Resultion,Links,StartDate,EndDate,Description,ArabicDescription,CorrectionFactor,Convert,ResultsUnit,comments
 MODIS/006/MOD11A1,LST_Day_1km,1000,MOD11A1.006 Terra Land Surface Temperature and Emissivity Daily Global 1km (google.com),2000-03-05,2021-10-15,Daytime Land Surface Temperature,??? ????? ??? ????? ????? (x),0.02,-273.15,celsius,QC_Day Not used
 MODIS/006/MOD11A1,LST_Night_1km,1000,MOD11A1.006 Terra Land Surface Temperature and Emissivity Daily Global 1km (google.com),2000-03-05,2021-10-15,Nighttime Land Surface Temperature,???? ????? ??? ????? ???? (x),0.02,-273.15,celsius,QC_Day Not used
 MODIS/006/MOD13A2,EVI,1000,MOD13A2.006 Terra Vegetation Indices 16-Day Global 1km (google.com),2000-02-18,2021-09-30,Enhanced Vegetation Index,???? ?????? ??????? ?????? (x),0,0,0,0
