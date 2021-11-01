@@ -13,4 +13,4 @@ owslib
 kwargs
 geemap
 leafmap
-PIL
+Pillow
