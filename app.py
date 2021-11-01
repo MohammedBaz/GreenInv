@@ -118,3 +118,16 @@ st.markdown(
     f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
     unsafe_allow_html=True,
 )
+###############################################
+import plotly.express as px
+VegetationConditionIndex=pandas.read_csv('VegetationConditionIndex.csv')
+Provinces=VegetationConditionIndex['Province'].unique()
+def plotIndictors(aProvince,df):
+  filteredVegetationConditionIndex=df[df["Province"]==aProvince]
+  fig = px.line(filteredVegetationConditionIndex, x='Date', y='Data')
+  fig.update_xaxes(title_text='Time')
+  fig.update_yaxes(title_text='Vegetation Condition Index of'+aProvince)
+  st.plotly_chart(fig)
+
+plotIndictors('Asir',VegetationConditionIndex)
+
