@@ -101,7 +101,25 @@ eresults=egetImageCollectionbyCountry(['Saudi Arabia'],'MODIS/006/MOD13A2','NDVI
 #image = Image.open(eresults[1])
 st.image(eresults[1], caption='Sunrise by the mountains')
 
-
+#######################################
 from PIL import Image
 image = Image.open('movie.gif')
 st.image(image, caption='Sunrise by the mountains')
+##############################
+import streamlit as st
+import base64
+
+"""### gif from url"""
+st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
+
+"""### gif from local file"""
+file_ = open("movie.gif", "rb")
+contents = file_.read()
+data_url = base64.b64encode(contents).decode("utf-8")
+file_.close()
+
+st.markdown(
+    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+    unsafe_allow_html=True,
+)
+
