@@ -52,4 +52,3 @@ def plotIndictors(aProvince,df):
   st.plotly_chart(fig)
 
 plotIndictors('Asir',VegetationConditionIndex)
-"""
