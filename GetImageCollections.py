@@ -77,6 +77,7 @@ def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartD
   reducedMapBandsFeatureCollectionDataFrame[BandName]=reducedMapBandsFeatureCollectionDataFrame[BandName]/10000
   reducedMapBandsFeatureCollectionDataFrame=add_date_info(reducedMapBandsFeatureCollectionDataFrame)
   ####################generate imageThumburl
+  BandMean=mapBands.mean()
   url = BandMean.getThumbUrl({
     'min': min(reducedMapBandsFeatureCollectionDataFrame[BandName]), 'max': max(reducedMapBandsFeatureCollectionDataFrame[BandName]),
      'dimensions': 512, 'region': aoi,
