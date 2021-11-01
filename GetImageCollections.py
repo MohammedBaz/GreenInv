@@ -63,7 +63,7 @@ def getImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDa
   return(reducedMapBandsFeatureCollectionDataFrame)
 
 
-def egetInformationfromImageCollection(CountryName,ImageCollectionName,BandName,StartDate,EndDate):
+def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate):
   aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.inList('ADM0_NAME', CountryName))
   aoi=aCountry.geometry()
   date_range=ee.DateRange(StartDate, EndDate)
