@@ -16,11 +16,10 @@ Sub3MainPageDescription=st.empty() # same as above
 
 import datetime
 with st.sidebar.expander("Please select the dataset we wish to work on"):
-  InputedBand = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
+  InputedBand = st.selectbox('Please select the meteorological dataset',BandInformation['ArabicDescription'])
   
   if InputedBand is not None:
     RowIndex=BandInformation[BandInformation['Description']==InputedBand].index[0]
-    
     ImageCollectionName=BandInformation['ImageCollection'][RowIndex]
     ListofBands=BandInformation['Bands'][RowIndex]
     Resultion=BandInformation['Resultion'][RowIndex]
