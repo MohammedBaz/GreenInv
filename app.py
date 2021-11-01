@@ -100,3 +100,8 @@ from PIL import Image
 eresults=egetImageCollectionbyCountry(['Saudi Arabia'],'MODIS/006/MOD13A2','NDVI','2010-01-01','2020-2-1')
 #image = Image.open(eresults[1])
 st.image(eresults[1], caption='Sunrise by the mountains')
+
+
+from PIL import Image
+image = Image.open('movie.gif')
+st.image(image, caption='Sunrise by the mountains')
