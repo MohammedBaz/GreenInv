@@ -1,5 +1,5 @@
 import streamlit as st   
-import panads 
+import pandas 
 #############################################################Read the datasets#################################################################
 
 BandInformation=pandas.read_csv('BandInformation.csv',parse_dates=['StartDate', 'EndDate'])
