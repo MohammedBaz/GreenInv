@@ -44,7 +44,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
     localdatasource=BandInformation['localdatasource'][RowIndex]
-    AnimatedImage=BandInformation['ImageMovie'][RowIndex]
+    AnimatedImage=BandInformation['animatedImage'][RowIndex]
     if localdatasource is not None:
      Workingdf=pandas.read_csv(localdatasource)
     with Sub2MainPageDescription:
