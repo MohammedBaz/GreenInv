@@ -4,6 +4,29 @@ import pandas
 
 BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=['StartDate', 'EndDate'])
 Provinces=pandas.read_csv('Provinces.csv',delimiter=';')
+
+import plotly.express as px
+VegetationConditionIndex=pandas.read_csv('VegetationConditionIndex.csv')
+Provinces=VegetationConditionIndex['Province'].unique()
+def plotIndictors(aProvince,df):
+  filteredVegetationConditionIndex=df[df["Province"]==aProvince]
+  fig = px.line(filteredVegetationConditionIndex, x='Date', y='Data')
+  fig.update_xaxes(title_text='Time')
+  fig.update_yaxes(title_text='Vegetation Condition Index of'+aProvince)
+  st.plotly_chart(fig)
+
+
+import base64
+
+
+file_ = open("movie.gif", "rb")
+contents = file_.read()
+data_url = base64.b64encode(contents).decode("utf-8")
+file_.close()
+st.markdown(
+    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+    unsafe_allow_html=True,
+)
 #############################################################Page Layout starts here############################################################
 
 st.title("متابعة الغطاء النباتي نسخة تحت التطوير مهادة الي مبادرة السعودية الخضراء")
@@ -28,29 +51,12 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     with Sub2MainPageDescription:
       with st.expander("See explanation"):
         InputedBand = st.selectbox('Please select the meteorological dataset',Provinces['ArabicProvince'])
+    with Sub3MainPageDescription:
+      plotIndictors('Asir',VegetationConditionIndex)
     
 ##############################
-import streamlit as st
-import base64
 
-
-file_ = open("movie.gif", "rb")
-contents = file_.read()
-data_url = base64.b64encode(contents).decode("utf-8")
-file_.close()
-st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
-    unsafe_allow_html=True,
-)
 ###############################################
-import plotly.express as px
-VegetationConditionIndex=pandas.read_csv('VegetationConditionIndex.csv')
-Provinces=VegetationConditionIndex['Province'].unique()
-def plotIndictors(aProvince,df):
-  filteredVegetationConditionIndex=df[df["Province"]==aProvince]
-  fig = px.line(filteredVegetationConditionIndex, x='Date', y='Data')
-  fig.update_xaxes(title_text='Time')
-  fig.update_yaxes(title_text='Vegetation Condition Index of'+aProvince)
-  st.plotly_chart(fig)
 
-plotIndictors('Asir',VegetationConditionIndex)
+
+
