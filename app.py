@@ -25,8 +25,9 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
     localdatasource=BandInformation['localdatasource'][RowIndex]
-    with st.expander("See explanation"):
-      InputedBand = st.selectbox('Please select the meteorological dataset',Provinces['ArabicProvince'])
+    with SubMainPageDescription:
+      with st.expander("See explanation"):
+        InputedBand = st.selectbox('Please select the meteorological dataset',Provinces['ArabicProvince'])
     
 ##############################
 import streamlit as st
