@@ -48,14 +48,12 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     EndDate=BandInformation['EndDate'][RowIndex]
     localdatasource=BandInformation['localdatasource'][RowIndex]
     if localdatasource is not None:
-     st.write(localdatasource)
-     xxx=pandas.read_csv(localdatasource)
-     st.write(xxx)
+     Workingdf=pandas.read_csv(localdatasource)
     with Sub2MainPageDescription:
       with st.expander("تفاصيل المؤشر حسب المناطق الادارية بالمملكة"):
         InputedProvince = st.selectbox('',Provincesdf['ArabicProvince'])
         ProvinceRowIndex=Provincesdf[Provincesdf['ArabicProvince']==InputedProvince].index[0]
-        #plotIndictors(Provincesdf['Province'][ProvinceRowIndex],VegetationConditionIndex)
+        plotIndictors(Provincesdf['Province'][ProvinceRowIndex],Workingdf)
     
     
 ##############################
