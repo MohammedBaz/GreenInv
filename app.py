@@ -49,10 +49,9 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     EndDate=BandInformation['EndDate'][RowIndex]
     localdatasource=BandInformation['localdatasource'][RowIndex]
     with Sub2MainPageDescription:
-      with st.expander("See explanation"):
+      with st.expander("تفاصيل المؤشر حسب المناطق الادارية بالمملكة"):
         InputedProvince = st.selectbox('xxxx',Provincesdf['ArabicProvince'])
-    with Sub3MainPageDescription:
-      plotIndictors('Asir',VegetationConditionIndex)
+        plotIndictors('Asir',VegetationConditionIndex)
     
 ##############################
 
