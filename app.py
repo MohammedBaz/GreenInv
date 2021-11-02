@@ -38,7 +38,7 @@ Sub3MainPageDescription=st.empty() # same as above
 
 import datetime
 with st.sidebar.expander(''):
-  InputedBand = st.selectbox(BandInformation['الرجاء اختيار الموشر','ArabicDescription'])
+  InputedBand = st.selectbox('الرجاء اختيار المؤشر',BandInformation['ArabicDescription'])
   
   if InputedBand is not None:
     RowIndex=BandInformation[BandInformation['ArabicDescription']==InputedBand].index[0]
