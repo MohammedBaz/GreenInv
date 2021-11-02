@@ -24,7 +24,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
-    localdatasource=BandInformation['BandInformation'][RowIndex]
+    localdatasource=BandInformation['localdatasource'][RowIndex]
     with st.expander("See explanation"):
       InputedBand = st.selectbox('Please select the meteorological dataset',Provinces['ArabicProvince'])
     
