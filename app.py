@@ -3,7 +3,7 @@ import pandas
 #############################################################Read the datasets#################################################################
 
 BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=['StartDate', 'EndDate'])
-Provinces=pandas.read_csv('Provinces.csv',delimiter=';')
+Provincesdf=pandas.read_csv('Provinces.csv')
 
 import plotly.express as px
 VegetationConditionIndex=pandas.read_csv('VegetationConditionIndex.csv')
@@ -50,7 +50,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     localdatasource=BandInformation['localdatasource'][RowIndex]
     with Sub2MainPageDescription:
       with st.expander("See explanation"):
-        InputedProvince = st.selectbox('xxxx',['sd'])
+        InputedProvince = st.selectbox('xxxx',Provincesdf['ArabicProvince'])
     with Sub3MainPageDescription:
       plotIndictors('Asir',VegetationConditionIndex)
     
