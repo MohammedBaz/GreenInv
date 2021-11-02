@@ -50,6 +50,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     if localdatasource is not None:
      st.write(localdatasource)
      xxx=pandas.read_csv(BandInformation['localdatasource'][RowIndex])
+     st.write(xxx)
     with Sub2MainPageDescription:
       with st.expander("تفاصيل المؤشر حسب المناطق الادارية بالمملكة"):
         InputedProvince = st.selectbox('',Provincesdf['ArabicProvince'])
