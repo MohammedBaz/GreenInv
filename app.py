@@ -37,7 +37,7 @@ Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 
 import datetime
-with st.sidebar.expander():
+with st.sidebar.expander(''):
   InputedBand = st.selectbox(BandInformation['الرجاء اختيار الموشر','ArabicDescription'])
   
   if InputedBand is not None:
