@@ -3,7 +3,7 @@ import pandas
 #############################################################Read the datasets#################################################################
 
 BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=['StartDate', 'EndDate'])
-Provincesdf=pandas.read_csv('Provinces.csv')
+Provincesdf=pandas.read_csv('Provinces.csv',delimiter=';')
 
 import plotly.express as px
 VegetationConditionIndex=pandas.read_csv('VegetationConditionIndex.csv')
