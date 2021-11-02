@@ -48,7 +48,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     EndDate=BandInformation['EndDate'][RowIndex]
     localdatasource=BandInformation['localdatasource'][RowIndex]
     if localdatasource is not None:
-      Workingdf=pandas.read_csv(localdatasource)
+      Workingdf=pandas.read_csv("'"+localdatasource+"'")
       st.write(Workingdf)
     with Sub2MainPageDescription:
       with st.expander("تفاصيل المؤشر حسب المناطق الادارية بالمملكة"):
