@@ -6,7 +6,7 @@ BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=
 
 #############################################################Page Layout starts here############################################################
 
-st.title("This is a POC app dedicated to Green initiative")
+st.title("متابعة الغطاء النباتي باستخدام نسخة تجريبية ")
 st.header("                                                   ")
 #One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
