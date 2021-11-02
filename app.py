@@ -1,13 +1,12 @@
 import streamlit as st   
-import pandas 
+import pandas
+import plotly.express as px
 #############################################################Read the datasets#################################################################
 
 BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=['StartDate', 'EndDate'])
 Provincesdf=pandas.read_csv('Provinces.csv',delimiter=';')
 
-import plotly.express as px
-VegetationConditionIndex=pandas.read_csv('VegetationConditionIndex.csv')
-Provinces=VegetationConditionIndex['Province'].unique()
+
 def plotIndictors(aProvince,df):
   filteredVegetationConditionIndex=df[df["Province"]==aProvince]
   fig = px.line(filteredVegetationConditionIndex, x='Date', y='Data')
@@ -48,11 +47,15 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
     localdatasource=BandInformation['localdatasource'][RowIndex]
+    if localdatasource is not None:
+      Workingdf=pandas.read_csv(localdatasource)
+      st.write(Workingdf)
     with Sub2MainPageDescription:
       with st.expander("تفاصيل المؤشر حسب المناطق الادارية بالمملكة"):
         InputedProvince = st.selectbox('',Provincesdf['ArabicProvince'])
         ProvinceRowIndex=Provincesdf[Provincesdf['ArabicProvince']==InputedProvince].index[0]
         plotIndictors(Provincesdf['Province'][ProvinceRowIndex],VegetationConditionIndex)
+    
     
 ##############################
 
