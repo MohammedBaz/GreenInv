@@ -50,7 +50,7 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     localdatasource=BandInformation['localdatasource'][RowIndex]
     with Sub2MainPageDescription:
       with st.expander("See explanation"):
-        InputedProvince = st.selectbox('Please select the meteorological dataset',BandInformation['ArabicDescription'])
+        InputedProvince = st.selectbox('Please select the meteorological dataset',BandInformation['Description'])
     with Sub3MainPageDescription:
       plotIndictors('Asir',VegetationConditionIndex)
     
