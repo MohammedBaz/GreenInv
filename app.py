@@ -52,7 +52,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
       with st.expander("تفاصيل المؤشر حسب المناطق الادارية بالمملكة"):
         InputedProvince = st.selectbox('',Provincesdf['ArabicProvince'])
         ProvinceRowIndex=Provincesdf[Provincesdf['ArabicProvince']==InputedProvince].index[0]
-        plotIndictors(Provincesdf[ProvinceRowIndex],VegetationConditionIndex)
+        plotIndictors(Provincesdf['Province'][ProvinceRowIndex],VegetationConditionIndex)
     
 ##############################
 
