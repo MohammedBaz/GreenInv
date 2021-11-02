@@ -47,12 +47,15 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     AnimatedImage=BandInformation['animatedImage'][RowIndex]
     if localdatasource is not None:
      Workingdf=pandas.read_csv(localdatasource)
+    with SubMainPageDescription:
+      PlotMovieGIF(AnimatedImage)
     with Sub2MainPageDescription:
       with st.expander("تفاصيل المؤشر حسب المناطق الادارية بالمملكة"):
         InputedProvince = st.selectbox('',Provincesdf['ArabicProvince'])
         ProvinceRowIndex=Provincesdf[Provincesdf['ArabicProvince']==InputedProvince].index[0]
         plotIndictors(Provincesdf['Province'][ProvinceRowIndex],Workingdf)
-      PlotMovieGIF(AnimatedImage)
+    with Sub3MainPageDescription:
+      st.write("مصدر المعلومات")
     
     
 ##############################
