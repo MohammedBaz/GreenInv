@@ -51,7 +51,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
         InputedProvince = st.selectbox('',Provincesdf['ArabicProvince'])
         ProvinceRowIndex=Provincesdf[Provincesdf['ArabicProvince']==InputedProvince].index[0]
         plotIndictors(Provincesdf['Province'][ProvinceRowIndex],Workingdf)
-    PlotMovieGIF("movie.gif")
+      PlotMovieGIF("movie.gif")
     
     
 ##############################
