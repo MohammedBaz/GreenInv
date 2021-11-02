@@ -15,17 +15,15 @@ def plotIndictors(aProvince,df):
   st.plotly_chart(fig)
 
 
-import base64
-
-
-file_ = open("movie.gif", "rb")
-contents = file_.read()
-data_url = base64.b64encode(contents).decode("utf-8")
-file_.close()
-st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
-    unsafe_allow_html=True,
-)
+  
+  def PlotMovieGIF(filename):
+    import base64
+    file_ = open(filename, "rb")
+    contents = file_.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file_.close()
+    st.markdown(
+      f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',unsafe_allow_html=True)
 #############################################################Page Layout starts here############################################################
 
 st.title("متابعة الغطاء النباتي نسخة تحت التطوير مهادة الي مبادرة السعودية الخضراء")
@@ -54,6 +52,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
         InputedProvince = st.selectbox('',Provincesdf['ArabicProvince'])
         ProvinceRowIndex=Provincesdf[Provincesdf['ArabicProvince']==InputedProvince].index[0]
         plotIndictors(Provincesdf['Province'][ProvinceRowIndex],Workingdf)
+        PlotMovieGIF("movie.gif")
     
     
 ##############################
