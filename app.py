@@ -50,8 +50,9 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     localdatasource=BandInformation['localdatasource'][RowIndex]
     with Sub2MainPageDescription:
       with st.expander("تفاصيل المؤشر حسب المناطق الادارية بالمملكة"):
-        InputedProvince = st.selectbox('xxxx',Provincesdf['ArabicProvince'])
-        plotIndictors('Asir',VegetationConditionIndex)
+        InputedProvince = st.selectbox('',Provincesdf['ArabicProvince'])
+        ProvinceRowIndex=Provincesdf[Provincesdf['ArabicProvince']==InputedProvince].index[0]
+        plotIndictors(Provincesdf['Province'],VegetationConditionIndex)
     
 ##############################
 
