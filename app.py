@@ -3,12 +3,11 @@ import pandas
 #############################################################Read the datasets#################################################################
 
 BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=['StartDate', 'EndDate'])
-
+Provinces=pandas.read_csv('Provinces.csv',delimiter=';')
 #############################################################Page Layout starts here############################################################
 
 st.title("متابعة الغطاء النباتي نسخة تحت التطوير مهادة الي مبادرة السعودية الخضراء")
-st.header("                                                   ")
-#One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
+
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
@@ -25,6 +24,9 @@ with st.sidebar.expander("Please select the dataset we wish to work on"):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
+    localdatasource=BandInformation['BandInformation'][RowIndex]
+    with st.expander("See explanation"):
+      InputedBand = st.selectbox('Please select the meteorological dataset',Provinces['ArabicProvince'])
     
 ##############################
 import streamlit as st
