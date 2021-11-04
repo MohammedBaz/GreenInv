@@ -26,6 +26,7 @@ import streamlit as st
 import pandas
 import plotly.express as px
 from datetime import timedelta, date
+from PIL import Image
 from GetImageCollections import egetImageCollectionbyCountry
 #############################################################Read the datasets#################################################################
 
@@ -81,6 +82,8 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  BandName=ListofBands,
                                  StartDate=StartDate,
                                  EndDate=StartDate+ timedelta(days=10))
+    with col1:
+      st.image(results[1], caption='Image of'+ListofBands)
     with Sub2MainPageDescription:
       st.write(results[0])
 
