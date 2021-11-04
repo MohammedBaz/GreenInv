@@ -22,15 +22,10 @@ import ee
 EE_CREDENTIALS = ee.ServiceAccountCredentials(st.secrets['client_email'], PathtoKeyFile)
 ee.Initialize(EE_CREDENTIALS)
 #####################################################
-
-
-
-
-
-
 import streamlit as st   
 import pandas
 import plotly.express as px
+from datetime import timedelta, date
 from GetImageCollections import egetImageCollectionbyCountry
 #############################################################Read the datasets#################################################################
 
@@ -82,8 +77,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  ImageCollectionName=ImageCollectionName,
                                  BandName=ListofBands,
                                  StartDate=StartDate,
-                                 EndDate=StartDate+10)
-##############################
+                                 EndDate=StartDate+ timedelta(days=10))
 
 ###############################################
 
