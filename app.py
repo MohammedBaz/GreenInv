@@ -39,7 +39,7 @@ def plotIndictors(bandName,df):
   fig = px.line(df, x='system:index', y=bandName)
   fig.update_xaxes(title_text='Time')
   fig.update_yaxes(title_text=bandName)
-  st.plotly_chart(fig)
+  st.plotly_chart(fig,use_container_width=True)
 
 
 #############################################################Page Layout starts here############################################################
