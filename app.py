@@ -1,6 +1,7 @@
 import streamlit as st   
 import pandas
 import plotly.express as px
+from GetImageCollections import egetImageCollectionbyCountry
 #############################################################Read the datasets#################################################################
 
 BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=['StartDate', 'EndDate'])
@@ -35,7 +36,7 @@ Sub3MainPageDescription=st.empty() # same as above
 import datetime
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
   InputedBand = st.selectbox('',BandInformation['ArabicDescription'])
-  
+  TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
   if InputedBand is not None:
     RowIndex=BandInformation[BandInformation['ArabicDescription']==InputedBand].index[0]
     ImageCollectionName=BandInformation['ImageCollection'][RowIndex]
@@ -43,21 +44,11 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
-    localdatasource=BandInformation['localdatasource'][RowIndex]
-    AnimatedImage=BandInformation['animatedImage'][RowIndex]
-    if localdatasource is not None:
-     Workingdf=pandas.read_csv(localdatasource)
-    with SubMainPageDescription:
-      PlotMovieGIF(AnimatedImage)
-    with Sub2MainPageDescription:
-      with st.expander("تفاصيل المؤشر حسب المناطق الادارية بالمملكة"):
-        InputedProvince = st.selectbox('',Provincesdf['ArabicProvince'])
-        ProvinceRowIndex=Provincesdf[Provincesdf['ArabicProvince']==InputedProvince].index[0]
-        plotIndictors(Provincesdf['Province'][ProvinceRowIndex],Workingdf)
-    with Sub3MainPageDescription:
-      st.write("مصدر المعلومات")
-    
-    
+    egetImageCollectionbyCountry(CountryName=['Saudi Arabia'],
+                                 ImageCollectionName=ImageCollectionName,
+                                 BandName=ListofBands,
+                                 StartDate=TimeSelector[0],
+                                 EndDate=TimeSelector[1])
 ##############################
 
 ###############################################
