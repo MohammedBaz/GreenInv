@@ -56,6 +56,7 @@ st.title("متابعة الغطاء النباتي نسخة تحت التطوي�
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
+
 with MainPageDescription: 
   col1, col2 = st.columns(2)
 
@@ -80,7 +81,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  BandName=ListofBands,
                                  StartDate=StartDate,
                                  EndDate=StartDate+ timedelta(days=10))
-    with Sub3MainPageDescription:
+    with Sub2MainPageDescription:
       st.write(results[0])
 
 ###############################################
