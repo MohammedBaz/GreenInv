@@ -36,7 +36,7 @@ Provincesdf=pandas.read_csv('Provinces.csv',delimiter=';')
 
 
 def plotIndictors(bandName,df):
-  fig = px.line(df, x='system:index', y='bandName')
+  fig = px.line(df, x='system:index', y=bandName)
   fig.update_xaxes(title_text='Time')
   fig.update_yaxes(title_text='Vegetation Condition Index of'+aProvince)
   st.plotly_chart(fig)
