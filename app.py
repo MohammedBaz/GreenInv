@@ -66,7 +66,7 @@ Sub3MainPageDescription=st.empty() # same as above
 import datetime
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
   InputedBand = st.selectbox('',BandInformation['ArabicDescription'])
-  TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
+  
   if InputedBand is not None:
     RowIndex=BandInformation[BandInformation['ArabicDescription']==InputedBand].index[0]
     ImageCollectionName=BandInformation['ImageCollection'][RowIndex]
@@ -74,6 +74,8 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
+    TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
+    
     egetImageCollectionbyCountry(CountryName=['Saudi Arabia'],
                                  ImageCollectionName=ImageCollectionName,
                                  BandName=ListofBands,
