@@ -78,7 +78,8 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  BandName=ListofBands,
                                  StartDate=StartDate,
                                  EndDate=StartDate+ timedelta(days=10))
-    st.write(results[0])
+    with Sub3MainPageDescription:
+      st.write(results[0])
 
 ###############################################
 
