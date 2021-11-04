@@ -73,11 +73,12 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     
     st.write("The strating date is:",TimeSelector[0])
     st.write("The end date is",TimeSelector[1])
-    egetImageCollectionbyCountry(CountryName=['Saudi Arabia'],
+    results=egetImageCollectionbyCountry(CountryName=['Saudi Arabia'],
                                  ImageCollectionName=ImageCollectionName,
                                  BandName=ListofBands,
                                  StartDate=StartDate,
                                  EndDate=StartDate+ timedelta(days=10))
+    st.write(results[0])
 
 ###############################################
 
