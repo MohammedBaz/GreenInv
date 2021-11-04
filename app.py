@@ -1,4 +1,5 @@
 import json
+import streamlit as st  
 import os 
 dictionary = {'type':st.secrets['type'],
               'project_id':st.secrets['project_id'],
