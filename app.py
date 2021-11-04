@@ -56,7 +56,9 @@ st.title("متابعة الغطاء النباتي نسخة تحت التطوي�
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
-Sub3MainPageDescription=st.empty() # same as above
+with MainPageDescription: 
+  col1, col2 = st.columns()
+
 
 import datetime
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
