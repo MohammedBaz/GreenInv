@@ -24,6 +24,7 @@ ee.Initialize(EE_CREDENTIALS)
 #####################################################
 import streamlit as st   
 import pandas
+import datetime
 import plotly.express as px
 from datetime import timedelta, date
 from PIL import Image
@@ -50,11 +51,7 @@ MainPageDescription = st.empty() # The main canvas where the input/output is dis
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
 
-with MainPageDescription: 
-  col1, col2 = st.columns(2)
 
-
-import datetime
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
   InputedBand = st.selectbox('',BandInformation['ArabicDescription'])
   
@@ -74,10 +71,8 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  BandName=ListofBands,
                                  StartDate=StartDate,
                                  EndDate=StartDate+ timedelta(days=10))
-    with col1:
-      
+    with MainPageDescription:
       st.image(results[1],use_column_width=True,caption='Image of'+ListofBands)
-    with col2:
       plotIndictors(ListofBands,results[0])
     with Sub2MainPageDescription:
       st.write(results[0])
