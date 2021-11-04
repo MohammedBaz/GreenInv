@@ -57,7 +57,7 @@ MainPageDescription = st.empty() # The main canvas where the input/output is dis
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
 with MainPageDescription: 
-  col1, col2 = st.columns()
+  col1, col2 = st.columns(2)
 
 
 import datetime
