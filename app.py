@@ -82,7 +82,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     #                             ImageCollectionName=ImageCollectionName,
     #                             BandName=ListofBands,
     #                             StartDate=TimeSelector[0],
-                                 EndDate=TimeSelector[1])
+    #                             EndDate=TimeSelector[1])
 ##############################
 
 ###############################################
