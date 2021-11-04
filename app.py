@@ -27,6 +27,7 @@ import pandas
 import plotly.express as px
 from datetime import timedelta, date
 from PIL import Image
+import plotly.express as px
 from GetImageCollections import egetImageCollectionbyCountry
 #############################################################Read the datasets#################################################################
 
@@ -34,22 +35,13 @@ BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=
 Provincesdf=pandas.read_csv('Provinces.csv',delimiter=';')
 
 
-def plotIndictors(aProvince,df):
-  filteredVegetationConditionIndex=df[df["Province"]==aProvince]
-  fig = px.line(filteredVegetationConditionIndex, x='Date', y='Data')
+def plotIndictors(bandName,df):
+  fig = px.line(df, x='system:index', y='bandName')
   fig.update_xaxes(title_text='Time')
   fig.update_yaxes(title_text='Vegetation Condition Index of'+aProvince)
   st.plotly_chart(fig)
 
 
-  
-def PlotMovieGIF(filename):
-  import base64
-  file_ = open(filename, "rb")
-  contents = file_.read()
-  data_url = base64.b64encode(contents).decode("utf-8")
-  file_.close()
-  st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',unsafe_allow_html=True)
 #############################################################Page Layout starts here############################################################
 
 st.title("متابعة الغطاء النباتي نسخة تحت التطوير مهادة الي مبادرة السعودية الخضراء")
@@ -84,6 +76,8 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  EndDate=StartDate+ timedelta(days=10))
     with col1:
       st.image(results[1], caption='Image of'+ListofBands)
+    with col2:
+      plotIndictors(ListofBands,results[0])
     with Sub2MainPageDescription:
       st.write(results[0])
 
