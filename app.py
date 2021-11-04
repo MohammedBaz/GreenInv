@@ -75,7 +75,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  StartDate=StartDate,
                                  EndDate=StartDate+ timedelta(days=10))
     with col1:
-      st.image(results[1], caption='Image of'+ListofBands,use_container_width=True)
+      st.image(results[1],use_container_width=True)
     with col2:
       plotIndictors(ListofBands,results[0])
     with Sub2MainPageDescription:
