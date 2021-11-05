@@ -62,7 +62,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
-    ColorPlatte=BandInformation['BandInformation'][RowIndex]
+    ColorPlatte=BandInformation['ColorPlatte'][RowIndex]
                  
     
     
