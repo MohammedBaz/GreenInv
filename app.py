@@ -67,7 +67,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
   InputedBand = st.radio('',BandInformation['Description'][0:6])
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
   InputedBand1 = st.radio('',BandInformation['Description'][7:15]) 
-st.write("This has been created")
+
   
   
   
