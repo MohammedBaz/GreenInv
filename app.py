@@ -32,7 +32,7 @@ import plotly.express as px
 from GetImageCollections import egetImageCollectionbyCountry
 #############################################################Read the datasets#################################################################
 
-BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=['StartDate', 'EndDate'])
+BandInformation=pandas.read_csv('BandInformation.csv',delimiter=';',parse_dates=['StartDate', 'EndDate'],encoding='ISO-8859–1')
 Provincesdf=pandas.read_csv('Provinces.csv',delimiter=';')
 
 
@@ -51,17 +51,20 @@ MainPageDescription = st.empty() # The main canvas where the input/output is dis
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
 
-
+#####################ArabicDescription=Description
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
-  InputedBand = st.selectbox('',BandInformation['ArabicDescription'])
+  InputedBand = st.selectbox('',BandInformation['Description'])
   
   if InputedBand is not None:
-    RowIndex=BandInformation[BandInformation['ArabicDescription']==InputedBand].index[0]
+    RowIndex=BandInformation[BandInformation['Description']==InputedBand].index[0]
     ImageCollectionName=BandInformation['ImageCollection'][RowIndex]
     ListofBands=BandInformation['Bands'][RowIndex]
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
+    ColorPlatte=BandInformation['BandInformation['EndDate'][RowIndex]'][RowIndex]
+    
+    
     TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     
     st.write("The strating date is:",TimeSelector[0])
@@ -70,7 +73,9 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  ImageCollectionName=ImageCollectionName,
                                  BandName=ListofBands,
                                  StartDate=StartDate,
-                                 EndDate=StartDate+ timedelta(days=10))
+                                 EndDate=StartDate+ timedelta(days=10),
+                                 ColorPlatte=ColorPlatte
+                                        )
     with MainPageDescription:
       st.image(results[1],use_column_width=True,caption='Image of'+ListofBands)
     with SubMainPageDescription:
