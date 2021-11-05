@@ -65,7 +65,8 @@ Sub2MainPageDescription=st.empty() # same as above
 #####################ArabicDescription=Description
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
   InputedBand = st.radio('',BandInformation['Description'])
-  
+with st.sidebar.expander('الرجاء اختيار المؤشر'):
+  InputedBand = st.radio('',BandInformation['Description'])  
   
   
   
