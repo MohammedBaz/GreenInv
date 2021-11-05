@@ -61,7 +61,7 @@ st.title("متابعة الغطاء النباتي نسخة تحت التطوي�
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
-
+Sub3MainPageDescription=st.empty() # same as above
 #####################ArabicDescription=Description
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
   InputedBand = st.radio('',BandInformation['Description'][0:6])
@@ -85,7 +85,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     EndDate=BandInformation['EndDate'][RowIndex]
     ColorPlatte=BandInformation['ColorPlatte'][RowIndex]
     ColorPlatte=SillyFunctionToOvercomeCVSColorReadings(ColorPlatte)
-    
+    Comments=BandInformation['ColorPlatte'][links]
   
     
     TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
@@ -117,6 +117,9 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
       plotIndictors(ListofBands,results[0])
     with Sub2MainPageDescription:
       st.write(results[0])
+    with Sub3MainPageDescription:
+      st.write("for more information about the dataset, please sse"+Comments)
+      
 
 ###############################################
 
