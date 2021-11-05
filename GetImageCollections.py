@@ -62,6 +62,43 @@ def getImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDa
   reducedMapBandsFeatureCollectionDataFrame.head(5)
   return(reducedMapBandsFeatureCollectionDataFrame)
 
+def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate,ColorPlatte):
+  aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.inList('ADM0_NAME', CountryName))
+  aoi=aCountry.geometry()
+  date_range=ee.DateRange(StartDate, EndDate)
+  mapBands = ee.ImageCollection(ImageCollectionName).filterDate(date_range).select(BandName).filterBounds(aoi)
+  reducedMapBands = create_reduce_region_function(
+    geometry=aoi, reducer=ee.Reducer.mean(), scale=1000, crs='EPSG:3310')
+  reducedMapBandsFeatureCollection = ee.FeatureCollection(mapBands.map(reducedMapBands)).filter(
+    ee.Filter.notNull(mapBands.first().bandNames()))
+  reducedMapBandsFeatureCollectionDictionary = fc_to_dict(reducedMapBandsFeatureCollection).getInfo()
+  reducedMapBandsFeatureCollectionDataFrame = pandas.DataFrame(reducedMapBandsFeatureCollectionDictionary)
+  if (BandName=='LST_Day_1km' or 'LST_Night_1km'):
+    reducedMapBandsFeatureCollectionDataFrame[BandName]=TemperatureCorrectionandConversionto(reducedMapBandsFeatureCollectionDataFrame[BandName])
+  else:
+    reducedMapBandsFeatureCollectionDataFrame[BandName]=reducedMapBandsFeatureCollectionDataFrame[BandName]/10000
+  reducedMapBandsFeatureCollectionDataFrame=add_date_info(reducedMapBandsFeatureCollectionDataFrame)
+  ####################generate imageThumburl
+  BandMean=mapBands.mean()
+  BandMean=BandMean.clip(aoi)
+  if (BandName=='LST_Day_1km' or 'LST_Night_1km'):
+    BandMean=BandMean.multiply(0.02)
+    BandMean=BandMean.add(-273.15)
+  # here we assigns the min and max of the color palette to the min and max of the band respectively, other statistical measures such as:
+  #  std(), mean(),median(),quantile(0.1) which is 10th percentile,quantile(0.9) which is 90th percentile can be used also. 
+  url = BandMean.getThumbUrl({
+    'min':reducedMapBandsFeatureCollectionDataFrame[BandName].min(), 'max':reducedMapBandsFeatureCollectionDataFrame[BandName].max(),
+     'dimensions': 512, 'region': aoi,
+    'palette': ColorPlatte})
+  return(reducedMapBandsFeatureCollectionDataFrame, url)
+
+
+
+
+
+
+
+"""
 def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate):
   aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.inList('ADM0_NAME', CountryName))
   aoi=aCountry.geometry()
@@ -95,7 +132,7 @@ def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartD
 
 
 
-"""
+
 def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate):
   aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.inList('ADM0_NAME', CountryName))
   aoi=aCountry.geometry()
