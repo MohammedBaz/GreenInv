@@ -73,7 +73,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     st.write("The strating date is:",TimeSelector[0])
     st.write("The end date is",TimeSelector[1])
     
-    ColorPlatte=['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
+    #ColorPlatte=['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
     
     results=egetImageCollectionbyCountry(CountryName=['Saudi Arabia'],
                                  ImageCollectionName=ImageCollectionName,
