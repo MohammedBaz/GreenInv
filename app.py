@@ -78,9 +78,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     ColorPlatte=BandInformation['ColorPlatte'][RowIndex]
     ColorPlatte=SillyFunctionToOvercomeCVSColorReadings(ColorPlatte)
     
-    #st.write(ColorPlatte)
-    #ColorPlatte = [s.replace('"', "") for s in ColorPlatte]       
-    st.write(type(ColorPlattex[0]))
+  
     
     TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     
