@@ -64,7 +64,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
-    ColorPlatte=BandInformation['ColorPlatte'][RowIndex]
+    ColorPlattex=BandInformation['ColorPlatte'][RowIndex]
     st.write(ColorPlatte)
     ColorPlatte = [s.replace('"', "") for s in ColorPlatte]       
     st.write(ColorPlatte)
@@ -81,8 +81,17 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  BandName=ListofBands,
                                  StartDate=StartDate,
                                  EndDate=StartDate+ timedelta(days=10),
-                                 ColorPlatte=ColorPlatte
+                                 ColorPlatte=ColorPlattex
                                         )
+    
+    
+    
+    
+    
+    
+    
+    
+    
     with MainPageDescription:
       st.image(results[1],use_column_width=True,caption='Image of'+ListofBands)
     with SubMainPageDescription:
