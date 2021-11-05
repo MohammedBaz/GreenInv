@@ -42,6 +42,17 @@ def plotIndictors(bandName,df):
   fig.update_yaxes(title_text=bandName)
   st.plotly_chart(fig,use_container_width=True)
 
+def SillyFunctionToOvercomeCVSColorReadings(temp):
+  xxx=temp.split(",")
+  colorlist=[]
+  for i in range(len(xxx)):
+    acolor = ""
+    for achar in xxx[i]:
+      if achar.isalpha() or achar.isnumeric() :
+        acolor=acolor+achar
+    colorlist.append(acolor)
+  return (colorlist)
+  
 
 #############################################################Page Layout starts here############################################################
 
@@ -64,8 +75,8 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
-    ColorPlattex=BandInformation['ColorPlatte'][RowIndex]
-    ColorPlattex = [ColorPlattex(x) for x in BandInformation['ColorPlatte'][RowIndex]]
+    ColorPlatte=BandInformation['ColorPlatte'][RowIndex]
+    ColorPlatte=SillyFunctionToOvercomeCVSColorReadings(ColorPlatte)
     
     #st.write(ColorPlatte)
     #ColorPlatte = [s.replace('"', "") for s in ColorPlatte]       
@@ -83,7 +94,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
                                  BandName=ListofBands,
                                  StartDate=StartDate,
                                  EndDate=StartDate+ timedelta(days=10),
-                                 ColorPlatte=ColorPlattex
+                                 ColorPlatte=ColorPlatte
                                         )
     
     
