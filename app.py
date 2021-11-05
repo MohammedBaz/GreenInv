@@ -67,7 +67,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     ColorPlattex=BandInformation['ColorPlatte'][RowIndex]
     #st.write(ColorPlatte)
     #ColorPlatte = [s.replace('"', "") for s in ColorPlatte]       
-    st.write(ColorPlattex[0])
+    st.write(type(ColorPlattex[0]))
     
     TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     
