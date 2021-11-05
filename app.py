@@ -55,6 +55,8 @@ Sub2MainPageDescription=st.empty() # same as above
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
   InputedBand = st.selectbox('',BandInformation['Description'])
   
+  
+ 
   if InputedBand is not None:
     RowIndex=BandInformation[BandInformation['Description']==InputedBand].index[0]
     ImageCollectionName=BandInformation['ImageCollection'][RowIndex]
