@@ -64,7 +64,9 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
-    ColorPlattex=BandInformation['ColorPlatte'][RowIndex].to_list()
+    ColorPlattex=BandInformation['ColorPlatte'][RowIndex]
+    ColorPlattex = [ColorPlattex(x) for x in BandInformation['ColorPlatte'][RowIndex]]
+    
     #st.write(ColorPlatte)
     #ColorPlatte = [s.replace('"', "") for s in ColorPlatte]       
     st.write(type(ColorPlattex[0]))
