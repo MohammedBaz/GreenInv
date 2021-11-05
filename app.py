@@ -62,7 +62,8 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     Resultion=BandInformation['Resultion'][RowIndex]
     StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
-    ColorPlatte=BandInformation['BandInformation['EndDate'][RowIndex]'][RowIndex]
+    ColorPlatte=BandInformation['BandInformation'][RowIndex]
+                 
     
     
     TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
