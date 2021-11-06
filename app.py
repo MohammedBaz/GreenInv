@@ -70,7 +70,7 @@ Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 #####################ArabicDescription=Description
 st.sidebar.write("This app uses real time data obtained from satellite imagery datasets to monitor several climate, Air Quality and Land Cover's parameters of KSA, beta version.")
-st.sidebar.write("developed by Mohammed Baz, your comments and suggestions would be greatly appreciated at:")
+st.sidebar.write("Developed by Mohammed Baz and gifted to Saudi Green Initiative, your comments and suggestions would be greatly appreciated at:")
 st.sidebar.markdown('<a href="mailto:mdbaz01@gamil.com">mdbaz01@gamil.com</a>', unsafe_allow_html=True)
 
 
