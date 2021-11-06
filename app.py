@@ -85,12 +85,12 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     st.write("The end date is",TimeSelector[1])
     
     
-   
+
     
     results=egetImageCollectionbyCountry(CountryName='Saudi Arabia',
                                          ImageCollectionName=ImageCollectionName,
                                          BandName=ListofBands,
-                                         StartDate=EndDate- timedelta(days=NumberofDays),
+                                         StartDate=EndDate- timedelta(days=int(NumberofDays)),
                                          EndDate=EndDate,
                                          ColorPlatte=ColorPlatte,
                                          CorrectionFactor=CorrectionFactor
