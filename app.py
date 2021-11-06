@@ -74,17 +74,9 @@ else:
   st.sidebar.markdown('<a href="mailto:mdbaz01@gamil.com">mdbaz01@gamil.com</a>', unsafe_allow_html=True)
 
 with st.sidebar.expander('Please select Parameter'):
-  if (lng):
-    InputedBand= st.radio('',BandInformation['ArabicDescription'])
-  else:  
-    InputedBand= st.radio('',BandInformation['Description'])  
-  
+  InputedBand= st.radio('',BandInformation['Description'])  
   if InputedBand is not None:
-    if (lng):
-      RowIndex=BandInformation[BandInformation['ArabicDescription']==InputedBand].index[0]
-    else:
-      RowIndex=BandInformation[BandInformation['Description']==InputedBand].index[0]
-      
+    RowIndex=BandInformation[BandInformation['Description']==InputedBand].index[0]  
     ImageCollectionName=BandInformation['ImageCollection'][RowIndex]
     ListofBands=BandInformation['Bands'][RowIndex]
     Resultion=BandInformation['Resultion'][RowIndex]
