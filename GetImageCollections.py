@@ -46,23 +46,9 @@ def add_date_info(df):
   df['DOY'] = pandas.DatetimeIndex(df['Timestamp']).dayofyear
   return df
 
-def getImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate,CorrectionFactor):
-  aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.eq('ADM0_NAME', CountryName))
-  aoi=aCountry.geometry()
-  date_range=ee.DateRange(StartDate, EndDate)
-  mapBands = ee.ImageCollection(ImageCollectionName).filterDate(date_range).select(BandName)
-  reducedMapBands = create_reduce_region_function(
-    geometry=aoi, reducer=ee.Reducer.mean(), scale=1000, crs='EPSG:3310')
-  reducedMapBandsFeatureCollection = ee.FeatureCollection(mapBands.map(reducedMapBands)).filter(
-    ee.Filter.notNull(mapBands.first().bandNames()))
-  reducedMapBandsFeatureCollectionDictionary = fc_to_dict(reducedMapBandsFeatureCollection).getInfo()
-  reducedMapBandsFeatureCollectionDataFrame = pandas.DataFrame(reducedMapBandsFeatureCollectionDictionary)
-  reducedMapBandsFeatureCollectionDataFrame[BandName]=reducedMapBandsFeatureCollectionDataFrame[BandName]/10000
-  reducedMapBandsFeatureCollectionDataFrame=add_date_info(reducedMapBandsFeatureCollectionDataFrame)
-  reducedMapBandsFeatureCollectionDataFrame.head(5)
-  return(reducedMapBandsFeatureCollectionDataFrame)
 
-def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate,ColorPlatte):
+
+def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate,ColorPlatte,CorrectionFactor):
   aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.inList('ADM0_NAME', CountryName))
   aoi=aCountry.geometry()
   date_range=ee.DateRange(StartDate, EndDate)
@@ -99,6 +85,23 @@ def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartD
 
 
 """
+def getImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate,CorrectionFactor):
+  aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.eq('ADM0_NAME', CountryName))
+  aoi=aCountry.geometry()
+  date_range=ee.DateRange(StartDate, EndDate)
+  mapBands = ee.ImageCollection(ImageCollectionName).filterDate(date_range).select(BandName)
+  reducedMapBands = create_reduce_region_function(
+    geometry=aoi, reducer=ee.Reducer.mean(), scale=1000, crs='EPSG:3310')
+  reducedMapBandsFeatureCollection = ee.FeatureCollection(mapBands.map(reducedMapBands)).filter(
+    ee.Filter.notNull(mapBands.first().bandNames()))
+  reducedMapBandsFeatureCollectionDictionary = fc_to_dict(reducedMapBandsFeatureCollection).getInfo()
+  reducedMapBandsFeatureCollectionDataFrame = pandas.DataFrame(reducedMapBandsFeatureCollectionDictionary)
+  reducedMapBandsFeatureCollectionDataFrame[BandName]=reducedMapBandsFeatureCollectionDataFrame[BandName]/10000
+  reducedMapBandsFeatureCollectionDataFrame=add_date_info(reducedMapBandsFeatureCollectionDataFrame)
+  reducedMapBandsFeatureCollectionDataFrame.head(5)
+  return(reducedMapBandsFeatureCollectionDataFrame)
+
+
 def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate):
   aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.inList('ADM0_NAME', CountryName))
   aoi=aCountry.geometry()
