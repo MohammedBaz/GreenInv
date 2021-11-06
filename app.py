@@ -58,8 +58,8 @@ def SillyFunctionToOvercomeCVSColorReadings(temp):
 
 st.title("CAQLCM of KSA")
 
-st.markdown("""<style>.big-font {font-size:300px !important;}</style>""", unsafe_allow_html=True)
-st.markdown('<p class="Beta version for Climate, Air Quality and Land Cover Monitoring of KSA using satellite satellite imagery</p>', unsafe_allow_html=True)
+#st.markdown("""<style>.big-font {font-size:300px !important;}</style>""", unsafe_allow_html=True)
+#st.markdown('<p class="Beta version for Climate, Air Quality and Land Cover Monitoring of KSA using satellite satellite imagery</p>', unsafe_allow_html=True)
 
 
 
