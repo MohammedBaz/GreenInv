@@ -46,8 +46,8 @@ def add_date_info(df):
   df['DOY'] = pandas.DatetimeIndex(df['Timestamp']).dayofyear
   return df
 
-def getImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate):
-  aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.inList('ADM0_NAME', CountryName))
+def getImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate,CorrectionFactor):
+  aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.eq('ADM0_NAME', CountryName))
   aoi=aCountry.geometry()
   date_range=ee.DateRange(StartDate, EndDate)
   mapBands = ee.ImageCollection(ImageCollectionName).filterDate(date_range).select(BandName)
@@ -76,7 +76,7 @@ def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartD
   if (BandName=='LST_Day_1km' or 'LST_Night_1km'):
     reducedMapBandsFeatureCollectionDataFrame[BandName]=TemperatureCorrectionandConversionto(reducedMapBandsFeatureCollectionDataFrame[BandName])
   else:
-    reducedMapBandsFeatureCollectionDataFrame[BandName]=reducedMapBandsFeatureCollectionDataFrame[BandName]/10000
+    reducedMapBandsFeatureCollectionDataFrame[BandName]=reducedMapBandsFeatureCollectionDataFrame[BandName]*CorrectionFactor
   reducedMapBandsFeatureCollectionDataFrame=add_date_info(reducedMapBandsFeatureCollectionDataFrame)
   ####################generate imageThumburl
   BandMean=mapBands.mean()
