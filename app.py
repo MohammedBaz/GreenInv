@@ -64,7 +64,7 @@ Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 #####################ArabicDescription=Description
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
-  InputedBand1 = st.selectbox('',BandInformation['Description'])  
+  InputedBand= st.selectbox('',BandInformation['Description'])  
   
   if InputedBand is not None:
     RowIndex=BandInformation[BandInformation['Description']==InputedBand].index[0]
