@@ -63,7 +63,6 @@ st.title("CAQLCM of KSA")
 
 
 
-
 #st.header('Beta version for Climate, Air Quality and Land Cover Monitoring of KSA using satellite satellite imagery')
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
@@ -71,7 +70,7 @@ Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 #####################ArabicDescription=Description
 with st.sidebar.expander('الرجاء اختيار المؤشر'):
-  InputedBand= st.selectbox('',BandInformation['Description'])  
+  InputedBand= st.radio('',BandInformation['Description'])  
   
   if InputedBand is not None:
     RowIndex=BandInformation[BandInformation['Description']==InputedBand].index[0]
