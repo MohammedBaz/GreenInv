@@ -69,7 +69,7 @@ SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handl
 Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 #####################ArabicDescription=Description
-st.sidebar.write("Beta version for Climate, Air Quality and Land Cover Monitoring of KSA using satellite satellite imagery")
+st.sidebar.write("This app uses real time data obtained from satellite imagery datasets to monitor several climate, Air Quality and Land Cover's parameters of KSA, beta version.")
 with st.sidebar.expander('Please select Parameter'):
   InputedBand= st.radio('',BandInformation['Description'])  
   
