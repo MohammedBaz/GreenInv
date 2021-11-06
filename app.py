@@ -104,7 +104,9 @@ with st.sidebar.expander('Please select Parameter'):
                                         )
     
     with MainPageDescription:
-      st.image(results[1],use_column_width=True,caption='Image of'+ListofBands)
+      #st.image(results[1],use_column_width=True,caption='Image of'+ListofBands)
+      image = Image.open(ListofBands+'.jpg')
+      st.image(image, ,use_column_width=True,caption='Image of'+ Description)
     with SubMainPageDescription:
       plotIndictors(ListofBands,results[0])
     with Sub2MainPageDescription:
