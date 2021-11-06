@@ -69,7 +69,7 @@ SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handl
 Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 #####################ArabicDescription=Description
-with st.sidebar.expander('الرجاء اختيار المؤشر'):
+with st.sidebar.expander('Please select Parameter'):
   InputedBand= st.radio('',BandInformation['Description'])  
   
   if InputedBand is not None:
