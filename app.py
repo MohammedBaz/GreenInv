@@ -90,7 +90,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     results=egetImageCollectionbyCountry(CountryName='Saudi Arabia',
                                          ImageCollectionName=ImageCollectionName,
                                          BandName=ListofBands,
-                                         StartDate=EndDate- timedelta(days=355),
+                                         StartDate=EndDate- timedelta(days=NumberofDays),
                                          EndDate=EndDate,
                                          ColorPlatte=ColorPlatte,
                                          CorrectionFactor=CorrectionFactor
