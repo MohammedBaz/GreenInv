@@ -104,7 +104,7 @@ with st.sidebar.expander('Please select Parameter'):
                                         )
     
     with MainPageDescription:
-      st.image(results[1],use_column_width=True,caption='Image of'+ListofBands)
+      st.image(results[1],use_column_width=True,caption='Image of '+ InputedBand+ ' for the Interval from '+StartDate+' until '+EndDate)
       #image = Image.open(ListofBands+'.gif')
       #st.image(image,use_column_width=True,caption='Image of'+ InputedBand+ 'for the Interval from'+StartDate+'until'+EndDate)
     with SubMainPageDescription:
