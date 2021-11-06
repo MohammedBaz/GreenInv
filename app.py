@@ -55,7 +55,7 @@ def SillyFunctionToOvercomeCVSColorReadings(temp):
   
 
 #############################################################Page Layout starts here############################################################
-
+lng = st.checkbox('Arabic')
 st.title("CAQLCM of KSA")
 
 #st.markdown("""<style>.big-font {font-size:300px !important;}</style>""", unsafe_allow_html=True)
