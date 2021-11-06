@@ -57,7 +57,7 @@ def SillyFunctionToOvercomeCVSColorReadings(temp):
 #############################################################Page Layout starts here############################################################
 
 st.title("متابعة الغطاء النباتي")
-st.header('نسخة تحت التطوير مهادة الي مبادرة السعودية الخضراء')
+st.header('نسخة تحت التطوير مهداة الي مبادرة السعودية الخضراء')
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
@@ -87,6 +87,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     ColorPlatte=BandInformation['ColorPlatte'][RowIndex]
     ColorPlatte=SillyFunctionToOvercomeCVSColorReadings(ColorPlatte)
     Comments=BandInformation['Links'][RowIndex]
+    CorrectionFactor=BandInformation['CorrectionFactor'][RowIndex]
   
     
     TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
@@ -96,21 +97,14 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     
     #ColorPlatte=['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
     
-    results=egetImageCollectionbyCountry(CountryName=['Saudi Arabia'],
-                                 ImageCollectionName=ImageCollectionName,
-                                 BandName=ListofBands,
-                                 StartDate=StartDate,
-                                 EndDate=StartDate+ timedelta(days=10),
-                                 ColorPlatte=ColorPlatte
+    results=egetImageCollectionbyCountry(CountryName='Saudi Arabia',
+                                         ImageCollectionName=ImageCollectionName,
+                                         BandName=ListofBands,
+                                         StartDate=StartDate,
+                                         EndDate=StartDate+ timedelta(days=10),
+                                         ColorPlatte=ColorPlatte,
+                                         CorrectionFactor=CorrectionFactor
                                         )
-    
-    
-    
-    
-    
-    
-    
-    
     
     with MainPageDescription:
       st.image(results[1],use_column_width=True,caption='Image of'+ListofBands)
