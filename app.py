@@ -63,7 +63,7 @@ st.title("CAQLCM of KSA")
 
 
 
-#st.header('Beta version for Climate, Air Quality and Land Cover Monitoring of KSA using satellite satellite imagery')
+#st.header('This app uses real time data obtained from satellite imagery datasets to monitor several climate, Air Quality and Land Cover of KSA, beta version. ')
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
