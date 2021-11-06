@@ -47,7 +47,7 @@ def add_date_info(df):
   return df
 
 
-
+@st.cache
 def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate,ColorPlatte,CorrectionFactor):
   aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.eq('ADM0_NAME', CountryName))
   aoi=aCountry.geometry()
