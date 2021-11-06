@@ -71,7 +71,7 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     ImageCollectionName=BandInformation['ImageCollection'][RowIndex]
     ListofBands=BandInformation['Bands'][RowIndex]
     Resultion=BandInformation['Resultion'][RowIndex]
-    #StartDate=BandInformation['StartDate'][RowIndex]
+    StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
     ColorPlatte=BandInformation['ColorPlatte'][RowIndex]
     ColorPlatte=SillyFunctionToOvercomeCVSColorReadings(ColorPlatte)
