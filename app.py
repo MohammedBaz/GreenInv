@@ -66,7 +66,7 @@ Sub3MainPageDescription=st.empty() # same as above
 lng = st.sidebar.checkbox('Arabic')
 if (lng):
   st.sidebar.write("يستخدم هذا التطبيق مجموعه من البيانات الحية المتوفرة من الاقمار الصناعية لتوفيرمراقبة لعدد من مؤشرات المناخ وجودة الهواء والغطاء الأرضي في المملكة العربية السعودية ، الإصدار التجريبي")
-  st.sidebar.write("Developed by Mohammed Baz and gifted to Saudi Green Initiative, your comments and suggestions would be greatly appreciated at:")
+  st.sidebar.write("تم  تطويره من قبل محمد باز وإهدائه للمبادرة السعودية الخضراء ، ستكون تعليقاتكم واقتراحاتكم محل تقدير كبير")
   st.sidebar.markdown('<a href="mailto:mdbaz01@gamil.com">mdbaz01@gamil.com</a>', unsafe_allow_html=True)
 else:
   st.sidebar.write("This app uses real time data obtained from satellite imagery datasets to monitor several climate, Air Quality and Land Cover's parameters of KSA, beta version.")
