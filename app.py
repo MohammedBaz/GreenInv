@@ -71,26 +71,27 @@ with st.sidebar.expander('الرجاء اختيار المؤشر'):
     ImageCollectionName=BandInformation['ImageCollection'][RowIndex]
     ListofBands=BandInformation['Bands'][RowIndex]
     Resultion=BandInformation['Resultion'][RowIndex]
-    StartDate=BandInformation['StartDate'][RowIndex]
+    #StartDate=BandInformation['StartDate'][RowIndex]
     EndDate=BandInformation['EndDate'][RowIndex]
     ColorPlatte=BandInformation['ColorPlatte'][RowIndex]
     ColorPlatte=SillyFunctionToOvercomeCVSColorReadings(ColorPlatte)
     Comments=BandInformation['Links'][RowIndex]
     CorrectionFactor=BandInformation['CorrectionFactor'][RowIndex]
-  
+    NumberofDays=BandInformation['NumberofDays'][RowIndex]
     
     TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     
     st.write("The strating date is:",TimeSelector[0])
     st.write("The end date is",TimeSelector[1])
     
-    #ColorPlatte=['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
+    
+   
     
     results=egetImageCollectionbyCountry(CountryName='Saudi Arabia',
                                          ImageCollectionName=ImageCollectionName,
                                          BandName=ListofBands,
-                                         StartDate=StartDate,
-                                         EndDate=StartDate+ timedelta(days=10),
+                                         StartDate=EndDate- timedelta(days=355),
+                                         EndDate=EndDate,
                                          ColorPlatte=ColorPlatte,
                                          CorrectionFactor=CorrectionFactor
                                         )
