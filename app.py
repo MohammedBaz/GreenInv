@@ -58,21 +58,20 @@ def SillyFunctionToOvercomeCVSColorReadings(temp):
 
 st.title("CAQLCM of KSA")
 
-#st.markdown("""<style>.big-font {font-size:300px !important;}</style>""", unsafe_allow_html=True)
-#st.markdown('<p class="Beta version for Climate, Air Quality and Land Cover Monitoring of KSA using satellite satellite imagery</p>', unsafe_allow_html=True)
-
-
-
-#st.header('This app uses real time data obtained from satellite imagery datasets to monitor several climate, Air Quality and Land Cover of KSA, beta version. ')
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
 Sub3MainPageDescription=st.empty() # same as above
 #####################ArabicDescription=Description
 lng = st.sidebar.checkbox('Arabic')
-st.sidebar.write("This app uses real time data obtained from satellite imagery datasets to monitor several climate, Air Quality and Land Cover's parameters of KSA, beta version.")
-st.sidebar.write("Developed by Mohammed Baz and gifted to Saudi Green Initiative, your comments and suggestions would be greatly appreciated at:")
-st.sidebar.markdown('<a href="mailto:mdbaz01@gamil.com">mdbaz01@gamil.com</a>', unsafe_allow_html=True)
+if (lng):
+  st.sidebar.write("يستخدم هذا التطبيق مجموعه من البيانات الحية المتوفرة من الاقمار الصناعية لتوفيرمراقبة لعدد من مؤشرات المناخ وجودة الهواء والغطاء الأرضي في المملكة العربية السعودية ، الإصدار التجريبي")
+  st.sidebar.write("Developed by Mohammed Baz and gifted to Saudi Green Initiative, your comments and suggestions would be greatly appreciated at:")
+  st.sidebar.markdown('<a href="mailto:mdbaz01@gamil.com">mdbaz01@gamil.com</a>', unsafe_allow_html=True)
+else:
+  st.sidebar.write("This app uses real time data obtained from satellite imagery datasets to monitor several climate, Air Quality and Land Cover's parameters of KSA, beta version.")
+  st.sidebar.write("Developed by Mohammed Baz and gifted to Saudi Green Initiative, your comments and suggestions would be greatly appreciated at:")
+  st.sidebar.markdown('<a href="mailto:mdbaz01@gamil.com">mdbaz01@gamil.com</a>', unsafe_allow_html=True)
 
 
 
