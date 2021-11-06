@@ -49,7 +49,7 @@ def add_date_info(df):
 
 
 def egetImageCollectionbyCountry(CountryName,ImageCollectionName,BandName,StartDate,EndDate,ColorPlatte,CorrectionFactor):
-  aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.inList('ADM0_NAME', CountryName))
+  aCountry = ee.FeatureCollection("FAO/GAUL/2015/level0").filter(ee.Filter.eq('ADM0_NAME', CountryName))
   aoi=aCountry.geometry()
   date_range=ee.DateRange(StartDate, EndDate)
   mapBands = ee.ImageCollection(ImageCollectionName).filterDate(date_range).select(BandName).filterBounds(aoi)
