@@ -57,7 +57,7 @@ def SillyFunctionToOvercomeCVSColorReadings(temp):
 #############################################################Page Layout starts here############################################################
 
 st.title("CAQLCM of KSA")
-st.header('Beta version for Climate, Air Quality and Land Cover Monitoring of KSA using satellite satellite imagery)
+st.header('Beta version for Climate, Air Quality and Land Cover Monitoring of KSA using satellite satellite imagery')
 MainPageDescription = st.empty() # The main canvas where the input/output is displayed 
 SubMainPageDescription=st.empty() # subcanvas where the inputs/outputs are handled 
 Sub2MainPageDescription=st.empty() # same as above
