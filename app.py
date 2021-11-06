@@ -102,7 +102,7 @@ with st.sidebar.expander('Please select Parameter'):
                                          ColorPlatte=ColorPlatte,
                                          CorrectionFactor=CorrectionFactor
                                         )
-    
+    @st.cache
     with MainPageDescription:
       #st.image(results[1],use_column_width=True,caption='Image of'+ListofBands)
       image = Image.open(ListofBands+'.gif')
