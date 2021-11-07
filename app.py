@@ -106,10 +106,11 @@ with st.sidebar.expander('Please select Parameter'):
                                         )
     
     with MainPageDescription:
-      st.image(results[1],use_column_width=True,caption=' Image of '+ InputedBand+ ' for the Interval from '+ str(EndDate- timedelta(days=int(NumberofDays)))+' until '+str(EndDate))
+      #st.image(results[1],use_column_width=True,caption=' Image of '+ InputedBand+ ' for the Interval from '+ str(EndDate- timedelta(days=int(NumberofDays)))+' until '+str(EndDate))
    
-      #image = Image.open(ListofBands+'.gif')
-      #st.image(image,use_column_width=True,caption='Image of'+ InputedBand+ 'for the Interval from'+ str(StartDate)+'until'+EndDate)
+      image = Image.open(ListofBands+'.gif')
+      st.image(image,use_column_width=True,caption=' Image of '+ InputedBand+ ' for the Interval from '+ str(EndDate- timedelta(days=int(NumberofDays)))+' until '+str(EndDate))
+   
     with SubMainPageDescription:
       plotIndictors(ListofBands,results[0])
     with Sub2MainPageDescription:
