@@ -1,16 +1,5 @@
 earthengine-api
 pandas
-matplotlib
 plotly
-folium
-streamlit_folium
-geopandas
-keplergl
 streamlit
-streamlit-folium
-streamlit-keplergl
-owslib
-kwargs
-geemap
-leafmap
 Pillow
