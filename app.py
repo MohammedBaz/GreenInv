@@ -128,6 +128,5 @@ image = plt.imread(ListofBands+'.gif')
 plt.axis('off')
 plt.imshow(image)
 plt.clim(results[0][ListofBands].min(), results[0][ListofBands].max())
-plt.colorbar()
+plt.colorbar.ColorbarBase(cmap=ColorPlatte)
 st.pyplot()
-
