@@ -124,9 +124,11 @@ with st.sidebar.expander('Please select Parameter'):
 #st.pyplot()
 ###############################################
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 image = plt.imread(ListofBands+'.gif')
 plt.axis('off')
 plt.imshow(image)
+cmap = mpl.colors.ListedColormap(ColorPlatte)
 plt.clim(results[0][ListofBands].min(), results[0][ListofBands].max())
-plt.colorbar.ColorbarBase(cmap=ColorPlatte)
+plt.colorbar.ColorbarBase(cmap=cmap)
 st.pyplot()
