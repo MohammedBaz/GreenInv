@@ -123,12 +123,10 @@ with st.sidebar.expander('Please select Parameter'):
 #im = ax.imshow(ListofBands+'.gif')
 #st.pyplot()
 ###############################################
-
 import matplotlib.pyplot as plt
-
-image = plt.imread('image1.png')
+image = plt.imread(ListofBands+'.gif')
 plt.axis('off')
-plt.imshow(ListofBands+'.gif')
+plt.imshow(image)
 plt.clim(xx[0]['LST_Day_1km'].min(), xx[0]['LST_Day_1km'].max())
 plt.colorbar()
 st.pyplot()
