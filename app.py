@@ -118,11 +118,18 @@ with st.sidebar.expander('Please select Parameter'):
     with Sub3MainPageDescription:
       st.write("for more information about the dataset, please sse"+Comments)
 ###################################      
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots()
-im = ax.imshow(ListofBands+'.gif')
-st.pyplot()
+#import matplotlib.pyplot as plt
+#fig, ax = plt.subplots()
+#im = ax.imshow(ListofBands+'.gif')
+#st.pyplot()
 ###############################################
 
+import matplotlib.pyplot as plt
 
+image = plt.imread('image1.png')
+plt.axis('off')
+plt.imshow(image)
+plt.clim(xx[0]['LST_Day_1km'].min(), xx[0]['LST_Day_1km'].max())
+plt.colorbar()
+st.pyplot()
 
