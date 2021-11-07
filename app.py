@@ -117,8 +117,10 @@ with st.sidebar.expander('Please select Parameter'):
       st.write(results[0])
     with Sub3MainPageDescription:
       st.write("for more information about the dataset, please sse"+Comments)
-      
-
+###################################      
+fig, ax = plt.subplots()
+im = ax.imshow(ListofBands+'.gif')
+st.pyplot()
 ###############################################
 
 
