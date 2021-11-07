@@ -37,7 +37,7 @@ Provincesdf=pandas.read_csv('Provinces.csv',delimiter=';')
 
 
 def plotIndictors(bandName,df):
-  fig = px.line(df,x='system:index',y=bandName)
+  fig = px.line(df,x='Timestamp',y=bandName)
   fig.update_xaxes(title_text='Time')
   fig.update_yaxes(title_text=bandName)
   st.plotly_chart(fig,use_container_width=True)
