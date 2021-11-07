@@ -117,18 +117,3 @@ with st.sidebar.expander('Please select Parameter'):
       st.write(results[0])
     with Sub3MainPageDescription:
       st.write("for more information about the dataset, please sse"+Comments)
-###################################      
-#import matplotlib.pyplot as plt
-#fig, ax = plt.subplots()
-#im = ax.imshow(ListofBands+'.gif')
-#st.pyplot()
-###############################################
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-image = plt.imread(ListofBands+'.gif')
-plt.axis('off')
-plt.imshow(image)
-cmap = mpl.colors.ListedColormap(ColorPlatte)
-plt.clim(results[0][ListofBands].min(), results[0][ListofBands].max())
-plt.colorbar.ColorbarBase(cmap=cmap)
-st.pyplot()
