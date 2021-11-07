@@ -31,8 +31,8 @@ from PIL import Image
 import plotly.express as px
 from GetImageCollections import egetImageCollectionbyCountry
 #############################################################Read the datasets#################################################################
-BandInformation=pandas.read_csv('BandInformation.csv',delimiter=',',parse_dates=['StartDate', 'EndDate'])
-#BandInformation=pandas.read_csv('BandInformation.csv',delimiter=',',parse_dates=['StartDate', 'EndDate'],encoding='ISO-8859–1')
+#BandInformation=pandas.read_csv('BandInformation.csv',delimiter=',',parse_dates=['StartDate', 'EndDate'])
+BandInformation=pandas.read_csv('BandInformation.csv',delimiter=',',parse_dates=['StartDate', 'EndDate'],encoding='ISO-8859–1')
 Provincesdf=pandas.read_csv('Provinces.csv',delimiter=';')
 
 
