@@ -128,7 +128,7 @@ import matplotlib.pyplot as plt
 
 image = plt.imread('image1.png')
 plt.axis('off')
-plt.imshow(image)
+plt.imshow(ListofBands+'.gif')
 plt.clim(xx[0]['LST_Day_1km'].min(), xx[0]['LST_Day_1km'].max())
 plt.colorbar()
 st.pyplot()
