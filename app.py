@@ -88,7 +88,7 @@ with st.sidebar.expander('Please select Parameter'):
     CorrectionFactor=BandInformation['CorrectionFactor'][RowIndex]
     NumberofDays=BandInformation['NumberofDays'][RowIndex]
     
-    #TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
+    TimeSelector = st.date_input("Pick a date", (StartDate, EndDate))
     
     #st.write("The strating date is:",TimeSelector[0])
     #st.write("The end date is",TimeSelector[1])
